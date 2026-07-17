@@ -28,14 +28,14 @@
           </div>
 
           <p class="intro">
-            Composable, dithered charts with a children-as-config Kotlin DSL.
-            Ordered-dither fills that hold up in light and dark, entrance animations,
+            Composable, dithered charts with a children-as-config Kotlin DSL.<br />
+            Ordered-dither fills that hold up in light and dark, entrance animations,<br />
             a gliding scrub tooltip, selection, pixel avatars, and colour bloom.
           </p>
 
           <div class="demo hero-demo" data-demo="area">
             <div class="demo-toolbar">
-              <span class="hint">scrub it, hover a series to inspect the values</span>
+              <span class="hint">scrub it, hover a legend entry to spotlight that series, click to lock it</span>
               <button class="icon-button replay" aria-label="Replay entrance animation" title="Replay">↻</button>
             </div>
             <div class="legend"><span class="blue">Desktop</span><span class="purple">Mobile</span></div>
@@ -49,13 +49,20 @@
             <button class="active" data-install="local">maven local</button>
             <button data-install="checkout">checkout</button>
           </div>
-          <p class="section-note">publish locally, then add the common multiplatform dependency</p>
+          <p class="section-note">via Gradle — publish locally, then add the common multiplatform dependency</p>
           <button class="command copy-command" data-copy="./gradlew :dither-kit-compose:publishToMavenLocal">
             <code>$ ./gradlew :dither-kit-compose:publishToMavenLocal</code><span aria-hidden="true">⧉</span>
           </button>
           <button class="command copy-command" data-copy='implementation("io.github.ryumacodes:dither-kit-compose:0.1.0-SNAPSHOT")'>
             <code>implementation("io.github.ryumacodes:dither-kit-compose:0.1.0-SNAPSHOT")</code><span aria-hidden="true">⧉</span>
           </button>
+          <button class="command copy-command" data-copy='include(":dither-kit-compose")'>
+            <code>include(":dither-kit-compose")</code><span aria-hidden="true">⧉</span>
+          </button>
+          <button class="command copy-command" data-copy="./gradlew check">
+            <code>$ ./gradlew check</code><span aria-hidden="true">⧉</span>
+          </button>
+          <div class="install-or"><span></span><b>or</b><span></span></div>
           <div class="install-actions">
             <a class="wide-action" href="https://github.com/ryumacodes/dither-kit-compose">view source on github ↗</a>
           </div>
@@ -84,7 +91,7 @@
               <div><h3>bar</h3><span class="component-name">BarChart</span></div>
               <div class="preview-actions"><button class="icon-button replay" aria-label="Replay entrance animation">↻</button><button class="code-toggle active" aria-expanded="false">preview</button><button class="code-toggle code-button" aria-expanded="false">code</button></div>
             </div>
-            <div class="legend"><span class="green">Desktop</span><span class="orange">Mobile</span></div>
+            <div class="legend"><span class="blue">Desktop</span><span class="purple">Mobile</span></div>
             <div class="canvas-wrap"><canvas aria-label="Bar chart"></canvas><div class="tooltip"></div></div>
             <pre><code>BarChart(data, stackType = StackType.Stacked) {
     grid(); xAxis(); yAxis(); tooltip()
@@ -98,7 +105,7 @@
               <div><h3>line</h3><span class="component-name">LineChart</span></div>
               <div class="preview-actions"><button class="icon-button replay" aria-label="Replay entrance animation">↻</button><button class="code-toggle active" aria-expanded="false">preview</button><button class="code-toggle code-button" aria-expanded="false">code</button></div>
             </div>
-            <div class="legend"><span class="pink">Desktop</span></div>
+            <div class="legend"><span class="blue">Desktop</span><span class="purple">Mobile</span></div>
             <div class="canvas-wrap"><canvas aria-label="Line chart"></canvas><div class="tooltip"></div></div>
             <pre><code>LineChart(data, markerIndex = selected) {
     grid(vertical = true)
@@ -112,6 +119,7 @@
               <div><h3>pie</h3><span class="component-name">PieChart</span></div>
               <div class="preview-actions"><button class="icon-button replay" aria-label="Replay entrance animation">↻</button><button class="code-toggle active" aria-expanded="false">preview</button><button class="code-toggle code-button" aria-expanded="false">code</button></div>
             </div>
+            <div class="legend pie-legend"><span class="blue">Chrome</span><span class="green">Safari</span><span class="orange">Firefox</span><span class="purple">Edge</span><span class="grey">Other</span></div>
             <div class="canvas-wrap polar"><canvas aria-label="Donut chart"></canvas><div class="tooltip"></div></div>
             <pre><code>PieChart(data = browserData, dataKey = "visitors", innerRadius = .5f) {
     legend(isClickable = true); tooltip(); pie()
@@ -123,7 +131,7 @@
               <div><h3>radar</h3><span class="component-name">RadarChart</span></div>
               <div class="preview-actions"><button class="icon-button replay" aria-label="Replay entrance animation">↻</button><button class="code-toggle active" aria-expanded="false">preview</button><button class="code-toggle code-button" aria-expanded="false">code</button></div>
             </div>
-            <div class="legend"><span class="blue">Desktop</span><span class="pink">Mobile</span></div>
+            <div class="legend"><span class="blue">Desktop</span><span class="purple">Mobile</span></div>
             <div class="canvas-wrap polar"><canvas aria-label="Radar chart"></canvas><div class="tooltip"></div></div>
             <pre><code>RadarChart(data, bloom = Bloom.Low) {
     legend(isClickable = true); tooltip()
@@ -136,40 +144,40 @@
         <section id="knobs" class="section-block">
           <div class="section-title"><h2>knobs</h2><span></span></div>
           <dl class="knob-list">
-            <div><dt><code>variant</code></dt><dd>Gradient · Dotted · Hatched · Solid</dd></div>
-            <div><dt><code>bloom</code></dt><dd>Off · Low · High · Aura · custom Bloom</dd></div>
-            <div><dt><code>stackType</code></dt><dd>Default · Stacked · Percent</dd></div>
+            <div><dt><code>variant</code></dt><dd><em>"gradient"</em> | <em>"dotted"</em> | <em>"hatched"</em> | <em>"solid"</em></dd></div>
+            <div><dt><code>bloom</code></dt><dd><em>"off"</em> | <em>"low"</em> | <em>"high"</em> | <em>"aura"</em> | { blur, brightness, opacity, saturate }</dd></div>
+            <div><dt><code>stackType</code></dt><dd><em>"default"</em> | <em>"stacked"</em> | <em>"percent"</em></dd></div>
             <div><dt><code>colors</code></dt><dd>green blue purple pink orange red grey</dd></div>
             <div><dt><code>animate</code></dt><dd>animationDurationMillis + replayToken</dd></div>
             <div><dt><code>interactive</code></dt><dd>false = decorative spark, no crosshair or tooltip</dd></div>
           </dl>
-          <div class="code-sample"><code>Sparkline(data = listOf(3, 7, 5, 9, 8, 12), color = DitherColor.Green, bloom = Bloom.Aura)</code><button class="copy-inline" aria-label="Copy code">⧉</button></div>
+          <div class="code-sample"><code><i>// tiny decorative spark — no axes, no tooltip</i><br />Sparkline(data = listOf(3, 7, 5, 9, 8, 12), color = DitherColor.Green, bloom = Bloom.Aura)</code><button class="copy-inline" aria-label="Copy code">⧉</button></div>
         </section>
 
         <section id="components" class="section-block">
           <div class="section-title split"><h2>beyond charts</h2><span></span><p>standalone — none pull in the chart DSL</p></div>
 
           <article class="standalone avatar-demo">
-            <div class="demo-heading"><div><h3>avatar</h3><span class="component-name">DitherAvatar</span></div></div>
+            <div class="demo-heading"><div><h3>avatar</h3><span class="component-name">DitherAvatar</span></div><div class="preview-actions"><button class="code-toggle active">preview</button><button class="code-toggle">code</button></div></div>
+            <div class="avatar-editor">
+              <canvas class="avatar-primary" aria-label="Current avatar"></canvas>
+              <div class="avatar-fields"><input class="avatar-name" value="ryuma" aria-label="Avatar name" /><div class="avatar-hue"><button>hue from name</button><input type="range" min="0" max="359" value="210" disabled aria-label="Avatar hue" /></div><p class="fine-print">deterministic from the name — 32 mirrored pattern bits × 2 mirror axes × 180 hues ≈ 1.5 trillion avatars. half fold left/right, half fold top/bottom.</p></div>
+            </div>
             <div class="avatar-row" aria-label="Generated avatar examples"></div>
-            <p class="fine-print">deterministic from the name — mirrored pattern bits, axis, and hue</p>
           </article>
 
           <article class="standalone button-demo">
-            <div class="demo-heading"><div><h3>button</h3><span class="component-name">DitherButton</span></div></div>
+            <div class="demo-heading"><div><h3>button</h3><span class="component-name">DitherButton</span></div><div class="preview-actions"><button class="code-toggle active">preview</button><button class="code-toggle">code</button></div></div>
+            <div class="option-row"><button class="active">gradient</button><button>dotted</button><button>hatched</button><button>solid</button><i></i><button class="active">blue</button><button>purple</button><button>green</button><button>pink</button><button>orange</button><button>red</button><button class="active">bloom</button></div>
             <div class="button-stage"><button class="dither-button">save changes</button><button class="dither-button secondary">deploy →</button><button class="dither-button" disabled>disabled</button></div>
             <span class="button-status" aria-live="polite">a real Compose button surface — hover and press make the dither denser</span>
           </article>
 
           <article class="standalone gradient-demo">
-            <div class="demo-heading"><div><h3>gradient</h3><span class="component-name">DitherGradient</span></div></div>
+            <div class="demo-heading"><div><h3>gradient</h3><span class="component-name">DitherGradient</span></div><div class="preview-actions"><button class="code-toggle active">preview</button><button class="code-toggle">code</button></div></div>
+            <div class="option-row"><button>up</button><button class="active">down</button><button>left</button><button>right</button><span>from</span><button>purple</button><button>blue</button><button>green</button><button>pink</button><button class="active">orange</button><button>red</button><span>to</span><button class="active">transparent</button><button>blue</button><button>pink</button></div>
             <div class="gradient-stage"><canvas aria-label="Dithered two-colour gradient"></canvas><span>your footer</span></div>
             <p class="fine-print">the wash fills whatever container it sits in</p>
-          </article>
-
-          <article class="standalone spark-demo">
-            <div class="demo-heading"><div><h3>sparkline</h3><span class="component-name">Sparkline</span></div></div>
-            <canvas aria-label="Sparkline chart"></canvas><strong>+28.4%</strong>
           </article>
         </section>
 

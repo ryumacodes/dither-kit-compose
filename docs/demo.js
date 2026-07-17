@@ -4,6 +4,7 @@ const palette = {
   purple: [150, 110, 255],
   pink: [240, 90, 190],
   orange: [255, 150, 50],
+  red: [246, 78, 92],
   grey: [92, 92, 100],
 }
 
@@ -15,8 +16,8 @@ const bayer = [
 ].map((row) => row.map((value) => (value + 0.5) / 16))
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
-const desktop = [186, 240, 205, 278, 255, 322, 298, 352]
-const mobile = [80, 118, 142, 165, 188, 215, 234, 252]
+const desktop = [120, 190, 230, 235, 200, 155, 120, 125]
+const mobile = [115, 125, 120, 115, 105, 95, 75, 80]
 const defaults = {
   desktopVariant: "gradient",
   mobileVariant: "gradient",
@@ -96,10 +97,14 @@ function drawGrid(context, box, labels = true) {
   context.setLineDash([])
   if (labels) {
     context.fillStyle = "#6f6f7a"
-    context.font = "9px SFMono-Regular, Consolas, monospace"
+    context.font = "10px 'Geist Mono', SFMono-Regular, Consolas, monospace"
     months.forEach((month, index) => {
       const x = box.left + (box.width * index) / (months.length - 1)
       context.fillText(month, x - 9, box.top + box.height + 18)
+    })
+    ;[300, 200, 100, 0].forEach((value, index) => {
+      const y = box.top + (box.height * index) / 3
+      context.fillText(String(value), box.left - 35, y + 3)
     })
   }
   context.restore()
@@ -155,7 +160,7 @@ function marker(context, box, index, series) {
 }
 
 function chartBox(width, height) {
-  return { left: 40, top: 18, width: width - 58, height: height - 54 }
+  return { left: 50, top: 18, width: width - 68, height: height - 54 }
 }
 
 function drawArea(card) {
@@ -165,9 +170,9 @@ function drawArea(card) {
   const box = chartBox(width, height)
   drawGrid(context, box)
   const first = linePoints(desktop, box)
-  const second = linePoints(mobile, box)
+  const second = linePoints(desktop.map((value, index) => value + mobile[index]), box)
   fillBand(context, first, box.top + box.height, palette.blue, 2, state.desktopVariant)
-  fillBand(context, second, second.map((point) => ({ ...point, y: point.y + 30 })), palette.purple, 2, state.mobileVariant)
+  fillBand(context, second, first, palette.purple, 2, state.mobileVariant)
   marker(context, box, state.hover.area, [{ points: first, color: palette.blue }, { points: second, color: palette.purple }])
 }
 
@@ -177,8 +182,10 @@ function drawLine(card) {
   context.clearRect(0, 0, width, height)
   const box = chartBox(width, height)
   drawGrid(context, box)
-  const points = linePoints(desktop, box)
-  fillBand(context, points, points.map((point) => ({ ...point, y: point.y + 22 })), palette.pink, 2, state.desktopVariant)
+  const points = linePoints(desktop, box, 280)
+  const mobilePoints = linePoints([110, 108, 100, 88, 74, 62, 60, 68], box, 280)
+  fillBand(context, points, points.map((point) => ({ ...point, y: point.y + 34 })), palette.blue, 2, state.desktopVariant)
+  fillBand(context, mobilePoints, mobilePoints.map((point) => ({ ...point, y: point.y + 34 })), palette.purple, 2, state.mobileVariant)
   const target = box.top + box.height * (1 - 200 / 380)
   context.strokeStyle = "rgba(160,160,170,.55)"
   context.setLineDash([5, 5])
@@ -190,7 +197,7 @@ function drawLine(card) {
   context.fillStyle = "#8c8c98"
   context.font = "9px SFMono-Regular, Consolas, monospace"
   context.fillText("Target", box.left + box.width - 38, target - 5)
-  marker(context, box, state.hover.line, [{ points, color: palette.pink }])
+  marker(context, box, state.hover.line, [{ points, color: palette.blue }, { points: mobilePoints, color: palette.purple }])
 }
 
 function drawBar(card) {
@@ -199,11 +206,11 @@ function drawBar(card) {
   context.clearRect(0, 0, width, height)
   const box = chartBox(width, height)
   drawGrid(context, box)
-  const max = state.stacked ? 580 : 380
+  const max = 380
   const slot = box.width / months.length
   const cell = 2
   const series = [desktop, mobile]
-  const colors = [palette.green, palette.orange]
+  const colors = [palette.blue, palette.purple]
   months.forEach((_, index) => {
     let base = 0
     series.forEach((values, seriesIndex) => {
@@ -234,8 +241,8 @@ function drawPie(card) {
   const canvas = card.querySelector("canvas")
   const { context, width, height } = fit(canvas)
   context.clearRect(0, 0, width, height)
-  const values = [275, 200, 145, 90]
-  const colors = [palette.blue, palette.green, palette.orange, palette.purple]
+  const values = [275, 200, 145, 90, 55]
+  const colors = [palette.blue, palette.green, palette.orange, palette.purple, palette.grey]
   const total = values.reduce((sum, value) => sum + value, 0)
   const center = { x: width / 2, y: height / 2 }
   const outer = Math.min(width, height) * 0.37
@@ -282,9 +289,9 @@ function drawRadar(card) {
   context.clearRect(0, 0, width, height)
   const center = { x: width / 2, y: height / 2 + 6 }
   const radius = Math.min(width, height) * 0.34
-  const labels = ["Speed", "Power", "Range", "Control", "Focus"]
-  const sets = [[.92, .76, .84, .68, .89], [.74, .88, .58, .82, .70]]
-  const colors = [palette.blue, palette.pink]
+  const labels = ["Speed", "Power", "Range", "Defense", "Magic", "Luck"]
+  const sets = [[.92, .92, .70, .84, .72, .74], [.60, .55, .68, .65, .88, .58]]
+  const colors = [palette.blue, palette.purple]
   const angles = labels.map((_, index) => -Math.PI / 2 + (index * Math.PI * 2) / labels.length)
   context.strokeStyle = "rgba(80,80,92,.48)"
   context.lineWidth = 1
@@ -403,12 +410,19 @@ function hsl(hue) {
 function drawGradient(canvas) {
   const { context, width, height } = fit(canvas)
   context.clearRect(0, 0, width, height)
+  const demo = canvas.closest(".gradient-demo")
+  const direction = demo.dataset.direction || "down"
+  const from = palette[demo.dataset.from] || palette.orange
+  const to = palette[demo.dataset.to] || null
   const cell = 3
   for (let y = 0; y < height; y += cell) {
     for (let x = 0; x < width; x += cell) {
-      const amount = x / width
-      const lit = 1 - amount > bayer[Math.floor(y / cell) & 3][Math.floor(x / cell) & 3]
-      context.fillStyle = rgb(lit ? palette.purple : palette.blue, 0.85)
+      const progress = direction === "up" ? 1 - y / height : direction === "left" ? 1 - x / width : direction === "right" ? x / width : y / height
+      const density = to ? 1 : 1 - progress
+      const lit = density > bayer[Math.floor(y / cell) & 3][Math.floor(x / cell) & 3]
+      if (!lit) continue
+      const color = to ? from.map((value, index) => Math.round(value + (to[index] - value) * progress)) : from
+      context.fillStyle = rgb(color, to ? 0.9 : 0.35 + density * 0.65)
       context.fillRect(x, y, cell, cell)
     }
   }
@@ -432,7 +446,6 @@ function drawAll() {
     if (name === "radar") drawRadar(card)
   })
   drawGradient(document.querySelector(".gradient-demo canvas"))
-  drawSpark(document.querySelector(".spark-demo canvas"))
 }
 
 function bindControls() {
@@ -504,7 +517,7 @@ function bindCharts() {
     const tooltip = card.querySelector(".tooltip")
     canvas.addEventListener("pointermove", (event) => {
       const rect = canvas.getBoundingClientRect()
-      const index = Math.max(0, Math.min(months.length - 1, Math.round(((event.clientX - rect.left - 40) / (rect.width - 58)) * (months.length - 1))))
+      const index = Math.max(0, Math.min(months.length - 1, Math.round(((event.clientX - rect.left - 50) / (rect.width - 68)) * (months.length - 1))))
       state.hover[card.dataset.demo] = index
       const values = card.dataset.demo === "area" ? `Desktop&nbsp; ${desktop[index]}<br>Mobile&nbsp;&nbsp;&nbsp; ${mobile[index]}` : `Desktop&nbsp; ${desktop[index]}`
       tooltip.innerHTML = `<strong>${months[index]}</strong><br>${values}`
@@ -522,7 +535,7 @@ function bindCharts() {
 }
 
 function bindActions() {
-  document.querySelectorAll(".preview-actions").forEach((actions) => {
+  document.querySelectorAll(".demo > .demo-heading .preview-actions").forEach((actions) => {
     const demo = actions.closest(".demo")
     const preview = actions.querySelector(".code-toggle:not(.code-button)")
     const code = actions.querySelector(".code-button")
@@ -592,16 +605,20 @@ function bindActions() {
       const checkout = button.dataset.install === "checkout"
       const values = checkout
         ? [
-            "include(\":dither-kit-compose\")",
+            "git clone https://github.com/ryumacodes/dither-kit-compose.git",
             "implementation(project(\":dither-kit-compose\"))",
+            "./gradlew :dither-kit-compose:check",
+            "./gradlew :sample:run",
           ]
         : [
             "./gradlew :dither-kit-compose:publishToMavenLocal",
             'implementation("io.github.ryumacodes:dither-kit-compose:0.1.0-SNAPSHOT")',
+            'include(":dither-kit-compose")',
+            "./gradlew check",
           ]
       installCommands.forEach((command, index) => {
         command.dataset.copy = values[index]
-        command.querySelector("code").textContent = `${index === 0 && !checkout ? "$ " : ""}${values[index]}`
+        command.querySelector("code").textContent = `${index === 0 || index >= 2 ? "$ " : ""}${values[index]}`
       })
     })
   })
@@ -615,14 +632,45 @@ function setCodeVisible(demo, preview, code, visible) {
   code.setAttribute("aria-expanded", String(visible))
 }
 
-const avatarNames = ["ryuma", "dither-kit", "compose", "tripwire"]
+const avatarNames = ["ada", "grace", "alan", "edsger", "barbara", "linus", "margaret", "dennis", "radia", "donald", "guido", "brendan"]
 
 document.querySelectorAll(".avatar-row").forEach((row) => {
   avatarNames.forEach((name) => {
+    const button = document.createElement("button")
+    button.className = "avatar-option"
+    button.setAttribute("aria-label", `Use the name ${name}`)
     const canvas = document.createElement("canvas")
     canvas.setAttribute("aria-label", `${name} avatar`)
     drawAvatar(canvas, name)
-    row.append(canvas)
+    button.append(canvas)
+    button.addEventListener("click", () => {
+      avatarInput.value = name
+      drawAvatar(primaryAvatar, name)
+    })
+    row.append(button)
+  })
+})
+
+const avatarInput = document.querySelector(".avatar-name")
+const primaryAvatar = document.querySelector(".avatar-primary")
+drawAvatar(primaryAvatar, avatarInput.value)
+avatarInput.addEventListener("input", () => drawAvatar(primaryAvatar, avatarInput.value || "compose"))
+
+document.querySelectorAll(".option-row").forEach((row) => {
+  const buttons = [...row.querySelectorAll("button")]
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const isGradient = row.closest(".gradient-demo")
+      const bounds = isGradient ? (index < 4 ? [0, 4] : index < 10 ? [4, 10] : [10, 13]) : (index < 4 ? [0, 4] : index < 10 ? [4, 10] : [10, 11])
+      buttons.slice(...bounds).forEach((item) => item.classList.remove("active"))
+      button.classList.add("active")
+      if (isGradient) {
+        isGradient.dataset.direction = buttons.slice(0, 4).find((item) => item.classList.contains("active"))?.textContent
+        isGradient.dataset.from = buttons.slice(4, 10).find((item) => item.classList.contains("active"))?.textContent
+        isGradient.dataset.to = buttons.slice(10).find((item) => item.classList.contains("active"))?.textContent
+        drawGradient(isGradient.querySelector("canvas"))
+      }
+    })
   })
 })
 
