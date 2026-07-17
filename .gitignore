@@ -1,0 +1,68 @@
+# Gradle and Kotlin
+.gradle/
+.kotlin/
+.konan/
+**/build/
+
+# IntelliJ IDEA and Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Android
+local.properties
+.externalNativeBuild/
+.cxx/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.hprof
+
+# Xcode and CocoaPods
+DerivedData/
+**/xcuserdata/
+*.xcuserstate
+Pods/
+*.framework/
+*.xcframework/
+
+# Credentials and local environment
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+secring.gpg
+
+# Local assistants and agent workspaces
+.agents/
+.aider*
+.claude/
+.codex/
+.continue/
+.cursor/
+.kisuke
+.kisuke/
+.github/copilot-instructions.md
+.github/prompts/
+**/AGENTS.md
+**/CLAUDE.md
+**/CODEX.md
+**/GEMINI.md
+**/KISUKE.md
+**/kisuke/
+**/kisuke.md
+*.prompt.md
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo

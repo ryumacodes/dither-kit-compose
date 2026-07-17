@@ -1,0 +1,23 @@
+rootProject.name = "dither-kit-compose"
+
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+include(":dither-kit-compose")
+
+include(":sample:shared")
+
+include(":sample:androidApp")
