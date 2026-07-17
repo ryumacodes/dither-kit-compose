@@ -11,28 +11,37 @@ jobs:
   desktop-android:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
-      - name: Check formatting
-        run: ./gradlew spotlessCheck
-      - name: Test desktop and compile Android
-        run: ./gradlew :dither-kit-compose:desktopTest :dither-kit-compose:compileAndroidMain
+      - uses: gradle/actions/setup-gradle@v6
+      - name: Check formatting and public API
+        run: ./gradlew spotlessCheck :dither-kit-compose:checkKotlinAbi
+      - name: Test desktop and build Android
+        run: >-
+          xvfb-run -a ./gradlew
+          :dither-kit-compose:desktopTest
+          :dither-kit-compose:compileAndroidMain
+          :sample:shared:compileKotlinDesktop
+          :sample:androidApp:assembleDebug
+      - name: Validate local Maven publications
+        run: ./gradlew :dither-kit-compose:publishToMavenLocal
 
   ios:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - name: Compile iOS library and sample
         run: >-
           ./gradlew
           :dither-kit-compose:compileKotlinIosSimulatorArm64
+          :dither-kit-compose:compileKotlinIosArm64
           :sample:shared:compileKotlinIosSimulatorArm64
+          :sample:shared:compileKotlinIosArm64

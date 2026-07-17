@@ -41,6 +41,8 @@ import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.changedToUp
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontFamily
@@ -77,6 +79,7 @@ public fun AreaChart(
     onHoverChange: (Int?) -> Unit = {},
     defaultSelectedDataKey: String? = null,
     onSelectionChange: (String?) -> Unit = {},
+    contentDescription: String? = null,
     content: CartesianChartScope.() -> Unit,
 ) {
     CartesianChart(
@@ -96,6 +99,7 @@ public fun AreaChart(
         onHoverChange,
         defaultSelectedDataKey,
         onSelectionChange,
+        contentDescription,
         content,
     )
 }
@@ -117,6 +121,7 @@ public fun LineChart(
     onHoverChange: (Int?) -> Unit = {},
     defaultSelectedDataKey: String? = null,
     onSelectionChange: (String?) -> Unit = {},
+    contentDescription: String? = null,
     content: CartesianChartScope.() -> Unit,
 ) {
     CartesianChart(
@@ -136,6 +141,7 @@ public fun LineChart(
         onHoverChange,
         defaultSelectedDataKey,
         onSelectionChange,
+        contentDescription,
         content,
     )
 }
@@ -157,6 +163,7 @@ public fun BarChart(
     onHoverChange: (Int?) -> Unit = {},
     defaultSelectedDataKey: String? = null,
     onSelectionChange: (String?) -> Unit = {},
+    contentDescription: String? = null,
     content: CartesianChartScope.() -> Unit,
 ) {
     CartesianChart(
@@ -176,6 +183,7 @@ public fun BarChart(
         onHoverChange,
         defaultSelectedDataKey,
         onSelectionChange,
+        contentDescription,
         content,
     )
 }
@@ -198,6 +206,7 @@ private fun CartesianChart(
     onHoverChange: (Int?) -> Unit,
     defaultSelectedDataKey: String?,
     onSelectionChange: (String?) -> Unit,
+    contentDescription: String?,
     content: CartesianChartScope.() -> Unit,
 ) {
     val parts = remember(content) { CartesianParts().also { CartesianChartScope(it).content() } }
@@ -209,7 +218,7 @@ private fun CartesianChart(
     LaunchedEffect(data, animate, animationDurationMillis, replayToken) {
         if (animate) {
             reveal.snapTo(0f)
-            reveal.animateTo(1f, tween(animationDurationMillis))
+            reveal.animateTo(1f, tween(animationDurationMillis.coerceAtLeast(0)))
         } else {
             reveal.snapTo(1f)
         }
@@ -233,7 +242,11 @@ private fun CartesianChart(
     val border = Color(0xff3f3f46)
     val textStyle = TextStyle(fontFamily = FontFamily.Monospace, fontSize = 10.sp, color = muted)
 
-    Column(modifier) {
+    val accessibleDescription =
+        contentDescription
+            ?: "${kind.name} chart, ${data.size} data points, ${parts.series.size} series"
+
+    Column(modifier.semantics { this.contentDescription = accessibleDescription }) {
         if (parts.legend) {
             ChartLegend(
                 parts.series,

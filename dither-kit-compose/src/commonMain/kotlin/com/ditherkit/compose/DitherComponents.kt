@@ -4,6 +4,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -13,7 +14,6 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -79,7 +79,7 @@ public fun DitherAvatar(
     LaunchedEffect(name, hue, mirror, replayToken, animate, animationDurationMillis) {
         if (animate) {
             revealAnimation.snapTo(0f)
-            revealAnimation.animateTo(1f, tween(animationDurationMillis))
+            revealAnimation.animateTo(1f, tween(animationDurationMillis.coerceAtLeast(0)))
         } else {
             revealAnimation.snapTo(1f)
         }
@@ -166,15 +166,13 @@ public fun DitherButton(
         modifier
             .defaultMinSize(minWidth = 80.dp, minHeight = 38.dp)
             .clip(androidx.compose.foundation.shape.RoundedCornerShape(6.dp))
-            .selectable(
-                true,
-                interactions,
+            .clickable(
+                interactionSource = interactions,
                 indication = null,
                 enabled = enabled,
                 role = Role.Button,
-            ) {
-                onClick()
-            }
+                onClick = onClick,
+            )
     ) {
         Canvas(Modifier.fillMaxSize()) {
             val grid = gridFor(size.width, size.height, 2f)

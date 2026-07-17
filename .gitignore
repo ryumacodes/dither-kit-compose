@@ -40,26 +40,6 @@ Pods/
 *.mobileprovision
 secring.gpg
 
-# Local assistants and agent workspaces
-.agents/
-.aider*
-.claude/
-.codex/
-.continue/
-.cursor/
-.kisuke
-.kisuke/
-.github/copilot-instructions.md
-.github/prompts/
-**/AGENTS.md
-**/CLAUDE.md
-**/CODEX.md
-**/GEMINI.md
-**/KISUKE.md
-**/kisuke/
-**/kisuke.md
-*.prompt.md
-
 # OS and editor files
 .DS_Store
 Thumbs.db

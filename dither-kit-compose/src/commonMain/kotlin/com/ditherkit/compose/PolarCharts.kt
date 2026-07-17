@@ -23,6 +23,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.changedToUp
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontFamily
@@ -52,6 +54,7 @@ public fun PieChart(
     margins: Margins = Margins(),
     defaultSelectedDataKey: String? = null,
     onSelectionChange: (String?) -> Unit = {},
+    contentDescription: String? = null,
     content: PieChartScope.() -> Unit = { pie() },
 ) {
     val parts = remember(content) { PolarParts().also { PieChartScope(it).content() } }
@@ -63,7 +66,7 @@ public fun PieChart(
     LaunchedEffect(data, animate, animationDurationMillis, replayToken) {
         if (animate) {
             revealAnimation.snapTo(0f)
-            revealAnimation.animateTo(1f, tween(animationDurationMillis))
+            revealAnimation.animateTo(1f, tween(animationDurationMillis.coerceAtLeast(0)))
         } else {
             revealAnimation.snapTo(1f)
         }
@@ -79,7 +82,8 @@ public fun PieChart(
         )
     }
 
-    Column(modifier) {
+    val accessibleDescription = contentDescription ?: "Pie chart, ${data.size} slices"
+    Column(modifier.semantics { this.contentDescription = accessibleDescription }) {
         if (parts.legend)
             ChartLegend(
                 series,
@@ -243,6 +247,7 @@ public fun RadarChart(
     margins: Margins = Margins(),
     defaultSelectedDataKey: String? = null,
     onSelectionChange: (String?) -> Unit = {},
+    contentDescription: String? = null,
     content: RadarChartScope.() -> Unit,
 ) {
     val parts = remember(content) { PolarParts().also { RadarChartScope(it).content() } }
@@ -254,7 +259,7 @@ public fun RadarChart(
     LaunchedEffect(data, animate, animationDurationMillis, replayToken) {
         if (animate) {
             revealAnimation.snapTo(0f)
-            revealAnimation.animateTo(1f, tween(animationDurationMillis))
+            revealAnimation.animateTo(1f, tween(animationDurationMillis.coerceAtLeast(0)))
         } else {
             revealAnimation.snapTo(1f)
         }
@@ -262,7 +267,9 @@ public fun RadarChart(
     val progress = revealAnimation.value
     val textMeasurer = rememberTextMeasurer()
 
-    Column(modifier) {
+    val accessibleDescription =
+        contentDescription ?: "Radar chart, ${data.size} axes, ${parts.series.size} series"
+    Column(modifier.semantics { this.contentDescription = accessibleDescription }) {
         if (parts.legend)
             ChartLegend(
                 parts.series,

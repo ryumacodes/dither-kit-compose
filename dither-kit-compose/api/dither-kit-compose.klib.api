@@ -1,0 +1,340 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.github.ryumacodes:dither-kit-compose>
+open annotation class com.ditherkit.compose/DitherChartDsl : kotlin/Annotation { // com.ditherkit.compose/DitherChartDsl|null[0]
+    constructor <init>() // com.ditherkit.compose/DitherChartDsl.<init>|<init>(){}[0]
+}
+
+final enum class com.ditherkit.compose/AvatarMirror : kotlin/Enum<com.ditherkit.compose/AvatarMirror> { // com.ditherkit.compose/AvatarMirror|null[0]
+    enum entry Auto // com.ditherkit.compose/AvatarMirror.Auto|null[0]
+    enum entry Horizontal // com.ditherkit.compose/AvatarMirror.Horizontal|null[0]
+    enum entry Vertical // com.ditherkit.compose/AvatarMirror.Vertical|null[0]
+
+    final val entries // com.ditherkit.compose/AvatarMirror.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/AvatarMirror> // com.ditherkit.compose/AvatarMirror.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/AvatarMirror // com.ditherkit.compose/AvatarMirror.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/AvatarMirror> // com.ditherkit.compose/AvatarMirror.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/DitherColor : kotlin/Enum<com.ditherkit.compose/DitherColor> { // com.ditherkit.compose/DitherColor|null[0]
+    enum entry Blue // com.ditherkit.compose/DitherColor.Blue|null[0]
+    enum entry Green // com.ditherkit.compose/DitherColor.Green|null[0]
+    enum entry Grey // com.ditherkit.compose/DitherColor.Grey|null[0]
+    enum entry Orange // com.ditherkit.compose/DitherColor.Orange|null[0]
+    enum entry Pink // com.ditherkit.compose/DitherColor.Pink|null[0]
+    enum entry Purple // com.ditherkit.compose/DitherColor.Purple|null[0]
+    enum entry Red // com.ditherkit.compose/DitherColor.Red|null[0]
+
+    final val entries // com.ditherkit.compose/DitherColor.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/DitherColor> // com.ditherkit.compose/DitherColor.entries.<get-entries>|<get-entries>#static(){}[0]
+    final val fill // com.ditherkit.compose/DitherColor.fill|{}fill[0]
+        final fun <get-fill>(): androidx.compose.ui.graphics/Color // com.ditherkit.compose/DitherColor.fill.<get-fill>|<get-fill>(){}[0]
+    final val line // com.ditherkit.compose/DitherColor.line|{}line[0]
+        final fun <get-line>(): androidx.compose.ui.graphics/Color // com.ditherkit.compose/DitherColor.line.<get-line>|<get-line>(){}[0]
+    final val star // com.ditherkit.compose/DitherColor.star|{}star[0]
+        final fun <get-star>(): androidx.compose.ui.graphics/Color // com.ditherkit.compose/DitherColor.star.<get-star>|<get-star>(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/DitherColor // com.ditherkit.compose/DitherColor.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/DitherColor> // com.ditherkit.compose/DitherColor.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/DitherVariant : kotlin/Enum<com.ditherkit.compose/DitherVariant> { // com.ditherkit.compose/DitherVariant|null[0]
+    enum entry Dotted // com.ditherkit.compose/DitherVariant.Dotted|null[0]
+    enum entry Gradient // com.ditherkit.compose/DitherVariant.Gradient|null[0]
+    enum entry Hatched // com.ditherkit.compose/DitherVariant.Hatched|null[0]
+    enum entry Solid // com.ditherkit.compose/DitherVariant.Solid|null[0]
+
+    final val entries // com.ditherkit.compose/DitherVariant.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/DitherVariant> // com.ditherkit.compose/DitherVariant.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/DitherVariant // com.ditherkit.compose/DitherVariant.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/DitherVariant> // com.ditherkit.compose/DitherVariant.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/DotVariant : kotlin/Enum<com.ditherkit.compose/DotVariant> { // com.ditherkit.compose/DotVariant|null[0]
+    enum entry Border // com.ditherkit.compose/DotVariant.Border|null[0]
+    enum entry ColoredBorder // com.ditherkit.compose/DotVariant.ColoredBorder|null[0]
+    enum entry Filled // com.ditherkit.compose/DotVariant.Filled|null[0]
+
+    final val entries // com.ditherkit.compose/DotVariant.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/DotVariant> // com.ditherkit.compose/DotVariant.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/DotVariant // com.ditherkit.compose/DotVariant.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/DotVariant> // com.ditherkit.compose/DotVariant.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/GradientDirection : kotlin/Enum<com.ditherkit.compose/GradientDirection> { // com.ditherkit.compose/GradientDirection|null[0]
+    enum entry Down // com.ditherkit.compose/GradientDirection.Down|null[0]
+    enum entry Left // com.ditherkit.compose/GradientDirection.Left|null[0]
+    enum entry Right // com.ditherkit.compose/GradientDirection.Right|null[0]
+    enum entry Up // com.ditherkit.compose/GradientDirection.Up|null[0]
+
+    final val entries // com.ditherkit.compose/GradientDirection.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/GradientDirection> // com.ditherkit.compose/GradientDirection.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/GradientDirection // com.ditherkit.compose/GradientDirection.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/GradientDirection> // com.ditherkit.compose/GradientDirection.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/LegendAlignment : kotlin/Enum<com.ditherkit.compose/LegendAlignment> { // com.ditherkit.compose/LegendAlignment|null[0]
+    enum entry Center // com.ditherkit.compose/LegendAlignment.Center|null[0]
+    enum entry End // com.ditherkit.compose/LegendAlignment.End|null[0]
+    enum entry Start // com.ditherkit.compose/LegendAlignment.Start|null[0]
+
+    final val entries // com.ditherkit.compose/LegendAlignment.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/LegendAlignment> // com.ditherkit.compose/LegendAlignment.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/LegendAlignment // com.ditherkit.compose/LegendAlignment.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/LegendAlignment> // com.ditherkit.compose/LegendAlignment.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/SeriesKind : kotlin/Enum<com.ditherkit.compose/SeriesKind> { // com.ditherkit.compose/SeriesKind|null[0]
+    enum entry Area // com.ditherkit.compose/SeriesKind.Area|null[0]
+    enum entry Bar // com.ditherkit.compose/SeriesKind.Bar|null[0]
+    enum entry Line // com.ditherkit.compose/SeriesKind.Line|null[0]
+
+    final val entries // com.ditherkit.compose/SeriesKind.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/SeriesKind> // com.ditherkit.compose/SeriesKind.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/SeriesKind // com.ditherkit.compose/SeriesKind.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/SeriesKind> // com.ditherkit.compose/SeriesKind.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/StackType : kotlin/Enum<com.ditherkit.compose/StackType> { // com.ditherkit.compose/StackType|null[0]
+    enum entry Default // com.ditherkit.compose/StackType.Default|null[0]
+    enum entry Percent // com.ditherkit.compose/StackType.Percent|null[0]
+    enum entry Stacked // com.ditherkit.compose/StackType.Stacked|null[0]
+
+    final val entries // com.ditherkit.compose/StackType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/StackType> // com.ditherkit.compose/StackType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/StackType // com.ditherkit.compose/StackType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/StackType> // com.ditherkit.compose/StackType.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/StrokeVariant : kotlin/Enum<com.ditherkit.compose/StrokeVariant> { // com.ditherkit.compose/StrokeVariant|null[0]
+    enum entry Dashed // com.ditherkit.compose/StrokeVariant.Dashed|null[0]
+    enum entry Solid // com.ditherkit.compose/StrokeVariant.Solid|null[0]
+
+    final val entries // com.ditherkit.compose/StrokeVariant.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/StrokeVariant> // com.ditherkit.compose/StrokeVariant.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/StrokeVariant // com.ditherkit.compose/StrokeVariant.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/StrokeVariant> // com.ditherkit.compose/StrokeVariant.values|values#static(){}[0]
+}
+
+final enum class com.ditherkit.compose/TooltipVariant : kotlin/Enum<com.ditherkit.compose/TooltipVariant> { // com.ditherkit.compose/TooltipVariant|null[0]
+    enum entry Default // com.ditherkit.compose/TooltipVariant.Default|null[0]
+    enum entry FrostedGlass // com.ditherkit.compose/TooltipVariant.FrostedGlass|null[0]
+
+    final val entries // com.ditherkit.compose/TooltipVariant.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.ditherkit.compose/TooltipVariant> // com.ditherkit.compose/TooltipVariant.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.ditherkit.compose/TooltipVariant // com.ditherkit.compose/TooltipVariant.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.ditherkit.compose/TooltipVariant> // com.ditherkit.compose/TooltipVariant.values|values#static(){}[0]
+}
+
+final class com.ditherkit.compose/Bloom { // com.ditherkit.compose/Bloom|null[0]
+    constructor <init>(kotlin/Float, kotlin/Float, kotlin/Float, kotlin/Float) // com.ditherkit.compose/Bloom.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+
+    final val blurRadius // com.ditherkit.compose/Bloom.blurRadius|{}blurRadius[0]
+        final fun <get-blurRadius>(): kotlin/Float // com.ditherkit.compose/Bloom.blurRadius.<get-blurRadius>|<get-blurRadius>(){}[0]
+    final val brightness // com.ditherkit.compose/Bloom.brightness|{}brightness[0]
+        final fun <get-brightness>(): kotlin/Float // com.ditherkit.compose/Bloom.brightness.<get-brightness>|<get-brightness>(){}[0]
+    final val opacity // com.ditherkit.compose/Bloom.opacity|{}opacity[0]
+        final fun <get-opacity>(): kotlin/Float // com.ditherkit.compose/Bloom.opacity.<get-opacity>|<get-opacity>(){}[0]
+    final val saturation // com.ditherkit.compose/Bloom.saturation|{}saturation[0]
+        final fun <get-saturation>(): kotlin/Float // com.ditherkit.compose/Bloom.saturation.<get-saturation>|<get-saturation>(){}[0]
+
+    final fun component1(): kotlin/Float // com.ditherkit.compose/Bloom.component1|component1(){}[0]
+    final fun component2(): kotlin/Float // com.ditherkit.compose/Bloom.component2|component2(){}[0]
+    final fun component3(): kotlin/Float // com.ditherkit.compose/Bloom.component3|component3(){}[0]
+    final fun component4(): kotlin/Float // com.ditherkit.compose/Bloom.component4|component4(){}[0]
+    final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.ditherkit.compose/Bloom // com.ditherkit.compose/Bloom.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ditherkit.compose/Bloom.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.ditherkit.compose/Bloom.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ditherkit.compose/Bloom.toString|toString(){}[0]
+
+    final object Companion { // com.ditherkit.compose/Bloom.Companion|null[0]
+        final val Aura // com.ditherkit.compose/Bloom.Companion.Aura|{}Aura[0]
+            final fun <get-Aura>(): com.ditherkit.compose/Bloom // com.ditherkit.compose/Bloom.Companion.Aura.<get-Aura>|<get-Aura>(){}[0]
+        final val High // com.ditherkit.compose/Bloom.Companion.High|{}High[0]
+            final fun <get-High>(): com.ditherkit.compose/Bloom // com.ditherkit.compose/Bloom.Companion.High.<get-High>|<get-High>(){}[0]
+        final val Low // com.ditherkit.compose/Bloom.Companion.Low|{}Low[0]
+            final fun <get-Low>(): com.ditherkit.compose/Bloom // com.ditherkit.compose/Bloom.Companion.Low.<get-Low>|<get-Low>(){}[0]
+        final val Off // com.ditherkit.compose/Bloom.Companion.Off|{}Off[0]
+            final fun <get-Off>(): com.ditherkit.compose/Bloom // com.ditherkit.compose/Bloom.Companion.Off.<get-Off>|<get-Off>(){}[0]
+    }
+}
+
+final class com.ditherkit.compose/CartesianChartScope { // com.ditherkit.compose/CartesianChartScope|null[0]
+    final fun area(kotlin/String, kotlin/String = ..., com.ditherkit.compose/DitherColor = ..., com.ditherkit.compose/DitherVariant = ..., kotlin/Boolean = ..., com.ditherkit.compose/DotStyle? = ..., com.ditherkit.compose/DotStyle? = ...) // com.ditherkit.compose/CartesianChartScope.area|area(kotlin.String;kotlin.String;com.ditherkit.compose.DitherColor;com.ditherkit.compose.DitherVariant;kotlin.Boolean;com.ditherkit.compose.DotStyle?;com.ditherkit.compose.DotStyle?){}[0]
+    final fun bar(kotlin/String, kotlin/String = ..., com.ditherkit.compose/DitherColor = ..., com.ditherkit.compose/DitherVariant = ..., kotlin/Boolean = ..., com.ditherkit.compose/DotStyle? = ..., com.ditherkit.compose/DotStyle? = ...) // com.ditherkit.compose/CartesianChartScope.bar|bar(kotlin.String;kotlin.String;com.ditherkit.compose.DitherColor;com.ditherkit.compose.DitherVariant;kotlin.Boolean;com.ditherkit.compose.DotStyle?;com.ditherkit.compose.DotStyle?){}[0]
+    final fun grid(kotlin/Boolean = ..., kotlin/Boolean = ..., com.ditherkit.compose/StrokeVariant = ...) // com.ditherkit.compose/CartesianChartScope.grid|grid(kotlin.Boolean;kotlin.Boolean;com.ditherkit.compose.StrokeVariant){}[0]
+    final fun legend(kotlin/Boolean = ..., com.ditherkit.compose/LegendAlignment = ...) // com.ditherkit.compose/CartesianChartScope.legend|legend(kotlin.Boolean;com.ditherkit.compose.LegendAlignment){}[0]
+    final fun line(kotlin/String, kotlin/String = ..., com.ditherkit.compose/DitherColor = ..., com.ditherkit.compose/StrokeVariant = ..., kotlin/Boolean = ..., com.ditherkit.compose/DitherVariant = ..., com.ditherkit.compose/DotStyle? = ..., com.ditherkit.compose/DotStyle? = ...) // com.ditherkit.compose/CartesianChartScope.line|line(kotlin.String;kotlin.String;com.ditherkit.compose.DitherColor;com.ditherkit.compose.StrokeVariant;kotlin.Boolean;com.ditherkit.compose.DitherVariant;com.ditherkit.compose.DotStyle?;com.ditherkit.compose.DotStyle?){}[0]
+    final fun referenceLine(kotlin/Number = ..., kotlin/String? = ..., com.ditherkit.compose/StrokeVariant = ...) // com.ditherkit.compose/CartesianChartScope.referenceLine|referenceLine(kotlin.Number;kotlin.String?;com.ditherkit.compose.StrokeVariant){}[0]
+    final fun tooltip(com.ditherkit.compose/TooltipVariant = ..., kotlin/Function2<kotlin/Double, kotlin/String, kotlin/String>? = ...) // com.ditherkit.compose/CartesianChartScope.tooltip|tooltip(com.ditherkit.compose.TooltipVariant;kotlin.Function2<kotlin.Double,kotlin.String,kotlin.String>?){}[0]
+    final fun xAxis(kotlin/Int = ..., kotlin/Float = ..., kotlin/Function2<kotlin/String, kotlin/Int, kotlin/String>? = ...) // com.ditherkit.compose/CartesianChartScope.xAxis|xAxis(kotlin.Int;kotlin.Float;kotlin.Function2<kotlin.String,kotlin.Int,kotlin.String>?){}[0]
+    final fun yAxis(kotlin/Int = ..., kotlin/Float = ..., kotlin/Function1<kotlin/Double, kotlin/String>? = ...) // com.ditherkit.compose/CartesianChartScope.yAxis|yAxis(kotlin.Int;kotlin.Float;kotlin.Function1<kotlin.Double,kotlin.String>?){}[0]
+}
+
+final class com.ditherkit.compose/ChartDatum { // com.ditherkit.compose/ChartDatum|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/Double>) // com.ditherkit.compose/ChartDatum.<init>|<init>(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Double>){}[0]
+
+    final val label // com.ditherkit.compose/ChartDatum.label|{}label[0]
+        final fun <get-label>(): kotlin/String // com.ditherkit.compose/ChartDatum.label.<get-label>|<get-label>(){}[0]
+    final val values // com.ditherkit.compose/ChartDatum.values|{}values[0]
+        final fun <get-values>(): kotlin.collections/Map<kotlin/String, kotlin/Double> // com.ditherkit.compose/ChartDatum.values.<get-values>|<get-values>(){}[0]
+
+    final fun component1(): kotlin/String // com.ditherkit.compose/ChartDatum.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, kotlin/Double> // com.ditherkit.compose/ChartDatum.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.collections/Map<kotlin/String, kotlin/Double> = ...): com.ditherkit.compose/ChartDatum // com.ditherkit.compose/ChartDatum.copy|copy(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Double>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ditherkit.compose/ChartDatum.equals|equals(kotlin.Any?){}[0]
+    final fun get(kotlin/String): kotlin/Double // com.ditherkit.compose/ChartDatum.get|get(kotlin.String){}[0]
+    final fun hashCode(): kotlin/Int // com.ditherkit.compose/ChartDatum.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ditherkit.compose/ChartDatum.toString|toString(){}[0]
+}
+
+final class com.ditherkit.compose/ChartSeries { // com.ditherkit.compose/ChartSeries|null[0]
+    constructor <init>(kotlin/String, kotlin/String = ..., com.ditherkit.compose/DitherColor = ..., com.ditherkit.compose/DitherVariant = ..., com.ditherkit.compose/StrokeVariant = ..., kotlin/Boolean = ..., com.ditherkit.compose/DotStyle? = ..., com.ditherkit.compose/DotStyle? = ..., com.ditherkit.compose/SeriesKind = ...) // com.ditherkit.compose/ChartSeries.<init>|<init>(kotlin.String;kotlin.String;com.ditherkit.compose.DitherColor;com.ditherkit.compose.DitherVariant;com.ditherkit.compose.StrokeVariant;kotlin.Boolean;com.ditherkit.compose.DotStyle?;com.ditherkit.compose.DotStyle?;com.ditherkit.compose.SeriesKind){}[0]
+
+    final val activeDot // com.ditherkit.compose/ChartSeries.activeDot|{}activeDot[0]
+        final fun <get-activeDot>(): com.ditherkit.compose/DotStyle? // com.ditherkit.compose/ChartSeries.activeDot.<get-activeDot>|<get-activeDot>(){}[0]
+    final val color // com.ditherkit.compose/ChartSeries.color|{}color[0]
+        final fun <get-color>(): com.ditherkit.compose/DitherColor // com.ditherkit.compose/ChartSeries.color.<get-color>|<get-color>(){}[0]
+    final val dataKey // com.ditherkit.compose/ChartSeries.dataKey|{}dataKey[0]
+        final fun <get-dataKey>(): kotlin/String // com.ditherkit.compose/ChartSeries.dataKey.<get-dataKey>|<get-dataKey>(){}[0]
+    final val dot // com.ditherkit.compose/ChartSeries.dot|{}dot[0]
+        final fun <get-dot>(): com.ditherkit.compose/DotStyle? // com.ditherkit.compose/ChartSeries.dot.<get-dot>|<get-dot>(){}[0]
+    final val isClickable // com.ditherkit.compose/ChartSeries.isClickable|{}isClickable[0]
+        final fun <get-isClickable>(): kotlin/Boolean // com.ditherkit.compose/ChartSeries.isClickable.<get-isClickable>|<get-isClickable>(){}[0]
+    final val kind // com.ditherkit.compose/ChartSeries.kind|{}kind[0]
+        final fun <get-kind>(): com.ditherkit.compose/SeriesKind // com.ditherkit.compose/ChartSeries.kind.<get-kind>|<get-kind>(){}[0]
+    final val label // com.ditherkit.compose/ChartSeries.label|{}label[0]
+        final fun <get-label>(): kotlin/String // com.ditherkit.compose/ChartSeries.label.<get-label>|<get-label>(){}[0]
+    final val strokeVariant // com.ditherkit.compose/ChartSeries.strokeVariant|{}strokeVariant[0]
+        final fun <get-strokeVariant>(): com.ditherkit.compose/StrokeVariant // com.ditherkit.compose/ChartSeries.strokeVariant.<get-strokeVariant>|<get-strokeVariant>(){}[0]
+    final val variant // com.ditherkit.compose/ChartSeries.variant|{}variant[0]
+        final fun <get-variant>(): com.ditherkit.compose/DitherVariant // com.ditherkit.compose/ChartSeries.variant.<get-variant>|<get-variant>(){}[0]
+
+    final fun component1(): kotlin/String // com.ditherkit.compose/ChartSeries.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.ditherkit.compose/ChartSeries.component2|component2(){}[0]
+    final fun component3(): com.ditherkit.compose/DitherColor // com.ditherkit.compose/ChartSeries.component3|component3(){}[0]
+    final fun component4(): com.ditherkit.compose/DitherVariant // com.ditherkit.compose/ChartSeries.component4|component4(){}[0]
+    final fun component5(): com.ditherkit.compose/StrokeVariant // com.ditherkit.compose/ChartSeries.component5|component5(){}[0]
+    final fun component6(): kotlin/Boolean // com.ditherkit.compose/ChartSeries.component6|component6(){}[0]
+    final fun component7(): com.ditherkit.compose/DotStyle? // com.ditherkit.compose/ChartSeries.component7|component7(){}[0]
+    final fun component8(): com.ditherkit.compose/DotStyle? // com.ditherkit.compose/ChartSeries.component8|component8(){}[0]
+    final fun component9(): com.ditherkit.compose/SeriesKind // com.ditherkit.compose/ChartSeries.component9|component9(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., com.ditherkit.compose/DitherColor = ..., com.ditherkit.compose/DitherVariant = ..., com.ditherkit.compose/StrokeVariant = ..., kotlin/Boolean = ..., com.ditherkit.compose/DotStyle? = ..., com.ditherkit.compose/DotStyle? = ..., com.ditherkit.compose/SeriesKind = ...): com.ditherkit.compose/ChartSeries // com.ditherkit.compose/ChartSeries.copy|copy(kotlin.String;kotlin.String;com.ditherkit.compose.DitherColor;com.ditherkit.compose.DitherVariant;com.ditherkit.compose.StrokeVariant;kotlin.Boolean;com.ditherkit.compose.DotStyle?;com.ditherkit.compose.DotStyle?;com.ditherkit.compose.SeriesKind){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ditherkit.compose/ChartSeries.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.ditherkit.compose/ChartSeries.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ditherkit.compose/ChartSeries.toString|toString(){}[0]
+}
+
+final class com.ditherkit.compose/DotStyle { // com.ditherkit.compose/DotStyle|null[0]
+    constructor <init>(com.ditherkit.compose/DotVariant = ..., kotlin/Float = ...) // com.ditherkit.compose/DotStyle.<init>|<init>(com.ditherkit.compose.DotVariant;kotlin.Float){}[0]
+
+    final val radius // com.ditherkit.compose/DotStyle.radius|{}radius[0]
+        final fun <get-radius>(): kotlin/Float // com.ditherkit.compose/DotStyle.radius.<get-radius>|<get-radius>(){}[0]
+    final val variant // com.ditherkit.compose/DotStyle.variant|{}variant[0]
+        final fun <get-variant>(): com.ditherkit.compose/DotVariant // com.ditherkit.compose/DotStyle.variant.<get-variant>|<get-variant>(){}[0]
+
+    final fun component1(): com.ditherkit.compose/DotVariant // com.ditherkit.compose/DotStyle.component1|component1(){}[0]
+    final fun component2(): kotlin/Float // com.ditherkit.compose/DotStyle.component2|component2(){}[0]
+    final fun copy(com.ditherkit.compose/DotVariant = ..., kotlin/Float = ...): com.ditherkit.compose/DotStyle // com.ditherkit.compose/DotStyle.copy|copy(com.ditherkit.compose.DotVariant;kotlin.Float){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ditherkit.compose/DotStyle.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.ditherkit.compose/DotStyle.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ditherkit.compose/DotStyle.toString|toString(){}[0]
+}
+
+final class com.ditherkit.compose/Margins { // com.ditherkit.compose/Margins|null[0]
+    constructor <init>(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...) // com.ditherkit.compose/Margins.<init>|<init>(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+
+    final val bottom // com.ditherkit.compose/Margins.bottom|{}bottom[0]
+        final fun <get-bottom>(): kotlin/Float // com.ditherkit.compose/Margins.bottom.<get-bottom>|<get-bottom>(){}[0]
+    final val end // com.ditherkit.compose/Margins.end|{}end[0]
+        final fun <get-end>(): kotlin/Float // com.ditherkit.compose/Margins.end.<get-end>|<get-end>(){}[0]
+    final val start // com.ditherkit.compose/Margins.start|{}start[0]
+        final fun <get-start>(): kotlin/Float // com.ditherkit.compose/Margins.start.<get-start>|<get-start>(){}[0]
+    final val top // com.ditherkit.compose/Margins.top|{}top[0]
+        final fun <get-top>(): kotlin/Float // com.ditherkit.compose/Margins.top.<get-top>|<get-top>(){}[0]
+
+    final fun component1(): kotlin/Float // com.ditherkit.compose/Margins.component1|component1(){}[0]
+    final fun component2(): kotlin/Float // com.ditherkit.compose/Margins.component2|component2(){}[0]
+    final fun component3(): kotlin/Float // com.ditherkit.compose/Margins.component3|component3(){}[0]
+    final fun component4(): kotlin/Float // com.ditherkit.compose/Margins.component4|component4(){}[0]
+    final fun copy(kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ..., kotlin/Float = ...): com.ditherkit.compose/Margins // com.ditherkit.compose/Margins.copy|copy(kotlin.Float;kotlin.Float;kotlin.Float;kotlin.Float){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ditherkit.compose/Margins.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.ditherkit.compose/Margins.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ditherkit.compose/Margins.toString|toString(){}[0]
+}
+
+final class com.ditherkit.compose/PieChartScope { // com.ditherkit.compose/PieChartScope|null[0]
+    final fun legend(kotlin/Boolean = ..., com.ditherkit.compose/LegendAlignment = ...) // com.ditherkit.compose/PieChartScope.legend|legend(kotlin.Boolean;com.ditherkit.compose.LegendAlignment){}[0]
+    final fun pie(com.ditherkit.compose/DitherVariant = ...) // com.ditherkit.compose/PieChartScope.pie|pie(com.ditherkit.compose.DitherVariant){}[0]
+    final fun tooltip(com.ditherkit.compose/TooltipVariant = ..., kotlin/Function2<kotlin/Double, kotlin/String, kotlin/String>? = ...) // com.ditherkit.compose/PieChartScope.tooltip|tooltip(com.ditherkit.compose.TooltipVariant;kotlin.Function2<kotlin.Double,kotlin.String,kotlin.String>?){}[0]
+}
+
+final class com.ditherkit.compose/RadarChartScope { // com.ditherkit.compose/RadarChartScope|null[0]
+    final fun legend(kotlin/Boolean = ..., com.ditherkit.compose/LegendAlignment = ...) // com.ditherkit.compose/RadarChartScope.legend|legend(kotlin.Boolean;com.ditherkit.compose.LegendAlignment){}[0]
+    final fun radar(kotlin/String, kotlin/String = ..., com.ditherkit.compose/DitherColor = ..., com.ditherkit.compose/DitherVariant = ...) // com.ditherkit.compose/RadarChartScope.radar|radar(kotlin.String;kotlin.String;com.ditherkit.compose.DitherColor;com.ditherkit.compose.DitherVariant){}[0]
+    final fun tooltip(com.ditherkit.compose/TooltipVariant = ..., kotlin/Function2<kotlin/Double, kotlin/String, kotlin/String>? = ...) // com.ditherkit.compose/RadarChartScope.tooltip|tooltip(com.ditherkit.compose.TooltipVariant;kotlin.Function2<kotlin.Double,kotlin.String,kotlin.String>?){}[0]
+}
+
+final class com.ditherkit.compose/ReferenceLineStyle { // com.ditherkit.compose/ReferenceLineStyle|null[0]
+    constructor <init>(kotlin/Double, kotlin/String? = ..., com.ditherkit.compose/StrokeVariant = ...) // com.ditherkit.compose/ReferenceLineStyle.<init>|<init>(kotlin.Double;kotlin.String?;com.ditherkit.compose.StrokeVariant){}[0]
+
+    final val label // com.ditherkit.compose/ReferenceLineStyle.label|{}label[0]
+        final fun <get-label>(): kotlin/String? // com.ditherkit.compose/ReferenceLineStyle.label.<get-label>|<get-label>(){}[0]
+    final val strokeVariant // com.ditherkit.compose/ReferenceLineStyle.strokeVariant|{}strokeVariant[0]
+        final fun <get-strokeVariant>(): com.ditherkit.compose/StrokeVariant // com.ditherkit.compose/ReferenceLineStyle.strokeVariant.<get-strokeVariant>|<get-strokeVariant>(){}[0]
+    final val value // com.ditherkit.compose/ReferenceLineStyle.value|{}value[0]
+        final fun <get-value>(): kotlin/Double // com.ditherkit.compose/ReferenceLineStyle.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/Double // com.ditherkit.compose/ReferenceLineStyle.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // com.ditherkit.compose/ReferenceLineStyle.component2|component2(){}[0]
+    final fun component3(): com.ditherkit.compose/StrokeVariant // com.ditherkit.compose/ReferenceLineStyle.component3|component3(){}[0]
+    final fun copy(kotlin/Double = ..., kotlin/String? = ..., com.ditherkit.compose/StrokeVariant = ...): com.ditherkit.compose/ReferenceLineStyle // com.ditherkit.compose/ReferenceLineStyle.copy|copy(kotlin.Double;kotlin.String?;com.ditherkit.compose.StrokeVariant){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.ditherkit.compose/ReferenceLineStyle.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.ditherkit.compose/ReferenceLineStyle.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.ditherkit.compose/ReferenceLineStyle.toString|toString(){}[0]
+}
+
+final val com.ditherkit.compose/com_ditherkit_compose_Bloom$stableprop // com.ditherkit.compose/com_ditherkit_compose_Bloom$stableprop|#static{}com_ditherkit_compose_Bloom$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_CartesianChartScope$stableprop // com.ditherkit.compose/com_ditherkit_compose_CartesianChartScope$stableprop|#static{}com_ditherkit_compose_CartesianChartScope$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_ChartDatum$stableprop // com.ditherkit.compose/com_ditherkit_compose_ChartDatum$stableprop|#static{}com_ditherkit_compose_ChartDatum$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_ChartSeries$stableprop // com.ditherkit.compose/com_ditherkit_compose_ChartSeries$stableprop|#static{}com_ditherkit_compose_ChartSeries$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_DotStyle$stableprop // com.ditherkit.compose/com_ditherkit_compose_DotStyle$stableprop|#static{}com_ditherkit_compose_DotStyle$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_Margins$stableprop // com.ditherkit.compose/com_ditherkit_compose_Margins$stableprop|#static{}com_ditherkit_compose_Margins$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_PieChartScope$stableprop // com.ditherkit.compose/com_ditherkit_compose_PieChartScope$stableprop|#static{}com_ditherkit_compose_PieChartScope$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_RadarChartScope$stableprop // com.ditherkit.compose/com_ditherkit_compose_RadarChartScope$stableprop|#static{}com_ditherkit_compose_RadarChartScope$stableprop[0]
+final val com.ditherkit.compose/com_ditherkit_compose_ReferenceLineStyle$stableprop // com.ditherkit.compose/com_ditherkit_compose_ReferenceLineStyle$stableprop|#static{}com_ditherkit_compose_ReferenceLineStyle$stableprop[0]
+
+final fun com.ditherkit.compose/AreaChart(kotlin.collections/List<com.ditherkit.compose/ChartDatum>, androidx.compose.ui/Modifier?, com.ditherkit.compose/StackType?, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Int, kotlin/Int, kotlin/Boolean, kotlin/Int?, kotlin/Boolean, kotlin/Boolean, com.ditherkit.compose/Margins?, kotlin/Function1<kotlin/Int?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<kotlin/String?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<com.ditherkit.compose/CartesianChartScope, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int, kotlin/Int) // com.ditherkit.compose/AreaChart|AreaChart(kotlin.collections.List<com.ditherkit.compose.ChartDatum>;androidx.compose.ui.Modifier?;com.ditherkit.compose.StackType?;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Int?;kotlin.Boolean;kotlin.Boolean;com.ditherkit.compose.Margins?;kotlin.Function1<kotlin.Int?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<kotlin.String?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<com.ditherkit.compose.CartesianChartScope,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/BarChart(kotlin.collections/List<com.ditherkit.compose/ChartDatum>, androidx.compose.ui/Modifier?, com.ditherkit.compose/StackType?, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Int, kotlin/Int, kotlin/Boolean, kotlin/Int?, kotlin/Boolean, kotlin/Boolean, com.ditherkit.compose/Margins?, kotlin/Function1<kotlin/Int?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<kotlin/String?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<com.ditherkit.compose/CartesianChartScope, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int, kotlin/Int) // com.ditherkit.compose/BarChart|BarChart(kotlin.collections.List<com.ditherkit.compose.ChartDatum>;androidx.compose.ui.Modifier?;com.ditherkit.compose.StackType?;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Int?;kotlin.Boolean;kotlin.Boolean;com.ditherkit.compose.Margins?;kotlin.Function1<kotlin.Int?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<kotlin.String?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<com.ditherkit.compose.CartesianChartScope,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/BlockLegend(kotlin.collections/List<com.ditherkit.compose/ChartSeries>, androidx.compose.ui/Modifier?, kotlin.collections/Map<kotlin/String, kotlin/Number>?, kotlin/Function1<kotlin/Double, kotlin/String>?, com.ditherkit.compose/LegendAlignment?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.ditherkit.compose/BlockLegend|BlockLegend(kotlin.collections.List<com.ditherkit.compose.ChartSeries>;androidx.compose.ui.Modifier?;kotlin.collections.Map<kotlin.String,kotlin.Number>?;kotlin.Function1<kotlin.Double,kotlin.String>?;com.ditherkit.compose.LegendAlignment?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/DitherAvatar(kotlin/String, androidx.compose.ui/Modifier?, androidx.compose.ui.unit/Dp, kotlin/Float?, com.ditherkit.compose/AvatarMirror?, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Int, kotlin/Int, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.ditherkit.compose/DitherAvatar|DitherAvatar(kotlin.String;androidx.compose.ui.Modifier?;androidx.compose.ui.unit.Dp;kotlin.Float?;com.ditherkit.compose.AvatarMirror?;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Int;kotlin.Int;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/DitherButton(kotlin/Function0<kotlin/Unit>, androidx.compose.ui/Modifier?, com.ditherkit.compose/DitherColor?, kotlin/Float?, com.ditherkit.compose/DitherVariant?, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Function3<androidx.compose.foundation.layout/BoxScope, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.ditherkit.compose/DitherButton|DitherButton(kotlin.Function0<kotlin.Unit>;androidx.compose.ui.Modifier?;com.ditherkit.compose.DitherColor?;kotlin.Float?;com.ditherkit.compose.DitherVariant?;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Function3<androidx.compose.foundation.layout.BoxScope,androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/DitherGradient(com.ditherkit.compose/DitherColor?, androidx.compose.ui/Modifier?, com.ditherkit.compose/DitherColor?, kotlin/Float?, kotlin/Float?, com.ditherkit.compose/GradientDirection?, androidx.compose.ui.unit/Dp, kotlin/Float, com.ditherkit.compose/Bloom?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.ditherkit.compose/DitherGradient|DitherGradient(com.ditherkit.compose.DitherColor?;androidx.compose.ui.Modifier?;com.ditherkit.compose.DitherColor?;kotlin.Float?;kotlin.Float?;com.ditherkit.compose.GradientDirection?;androidx.compose.ui.unit.Dp;kotlin.Float;com.ditherkit.compose.Bloom?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/LineChart(kotlin.collections/List<com.ditherkit.compose/ChartDatum>, androidx.compose.ui/Modifier?, com.ditherkit.compose/StackType?, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Int, kotlin/Int, kotlin/Boolean, kotlin/Int?, kotlin/Boolean, kotlin/Boolean, com.ditherkit.compose/Margins?, kotlin/Function1<kotlin/Int?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<kotlin/String?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<com.ditherkit.compose/CartesianChartScope, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int, kotlin/Int) // com.ditherkit.compose/LineChart|LineChart(kotlin.collections.List<com.ditherkit.compose.ChartDatum>;androidx.compose.ui.Modifier?;com.ditherkit.compose.StackType?;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Int?;kotlin.Boolean;kotlin.Boolean;com.ditherkit.compose.Margins?;kotlin.Function1<kotlin.Int?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<kotlin.String?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<com.ditherkit.compose.CartesianChartScope,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/PieChart(kotlin.collections/List<com.ditherkit.compose/ChartDatum>, kotlin/String, kotlin.collections/Map<kotlin/String, com.ditherkit.compose/DitherColor>, androidx.compose.ui/Modifier?, kotlin/Float, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Int, kotlin/Int, kotlin/Boolean, com.ditherkit.compose/Margins?, kotlin/String?, kotlin/Function1<kotlin/String?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<com.ditherkit.compose/PieChartScope, kotlin/Unit>?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int, kotlin/Int) // com.ditherkit.compose/PieChart|PieChart(kotlin.collections.List<com.ditherkit.compose.ChartDatum>;kotlin.String;kotlin.collections.Map<kotlin.String,com.ditherkit.compose.DitherColor>;androidx.compose.ui.Modifier?;kotlin.Float;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Int;kotlin.Int;kotlin.Boolean;com.ditherkit.compose.Margins?;kotlin.String?;kotlin.Function1<kotlin.String?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<com.ditherkit.compose.PieChartScope,kotlin.Unit>?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/RadarChart(kotlin.collections/List<com.ditherkit.compose/ChartDatum>, androidx.compose.ui/Modifier?, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Int, kotlin/Int, kotlin/Boolean, com.ditherkit.compose/Margins?, kotlin/String?, kotlin/Function1<kotlin/String?, kotlin/Unit>?, kotlin/String?, kotlin/Function1<com.ditherkit.compose/RadarChartScope, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int, kotlin/Int) // com.ditherkit.compose/RadarChart|RadarChart(kotlin.collections.List<com.ditherkit.compose.ChartDatum>;androidx.compose.ui.Modifier?;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Int;kotlin.Int;kotlin.Boolean;com.ditherkit.compose.Margins?;kotlin.String?;kotlin.Function1<kotlin.String?,kotlin.Unit>?;kotlin.String?;kotlin.Function1<com.ditherkit.compose.RadarChartScope,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/Sparkline(kotlin.collections/List<kotlin/Number>, com.ditherkit.compose/DitherColor, androidx.compose.ui/Modifier?, com.ditherkit.compose/DitherVariant?, kotlin/Int?, kotlin/Boolean, com.ditherkit.compose/Bloom?, kotlin/Boolean, kotlin/Boolean, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.ditherkit.compose/Sparkline|Sparkline(kotlin.collections.List<kotlin.Number>;com.ditherkit.compose.DitherColor;androidx.compose.ui.Modifier?;com.ditherkit.compose.DitherVariant?;kotlin.Int?;kotlin.Boolean;com.ditherkit.compose.Bloom?;kotlin.Boolean;kotlin.Boolean;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.ditherkit.compose/chartData(kotlin/Array<out kotlin/Pair<kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/Number>>>...): kotlin.collections/List<com.ditherkit.compose/ChartDatum> // com.ditherkit.compose/chartData|chartData(kotlin.Array<out|kotlin.Pair<kotlin.String,kotlin.collections.Map<kotlin.String,kotlin.Number>>>...){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_Bloom$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_Bloom$stableprop_getter|com_ditherkit_compose_Bloom$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_CartesianChartScope$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_CartesianChartScope$stableprop_getter|com_ditherkit_compose_CartesianChartScope$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_ChartDatum$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_ChartDatum$stableprop_getter|com_ditherkit_compose_ChartDatum$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_ChartSeries$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_ChartSeries$stableprop_getter|com_ditherkit_compose_ChartSeries$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_DotStyle$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_DotStyle$stableprop_getter|com_ditherkit_compose_DotStyle$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_Margins$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_Margins$stableprop_getter|com_ditherkit_compose_Margins$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_PieChartScope$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_PieChartScope$stableprop_getter|com_ditherkit_compose_PieChartScope$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_RadarChartScope$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_RadarChartScope$stableprop_getter|com_ditherkit_compose_RadarChartScope$stableprop_getter(){}[0]
+final fun com.ditherkit.compose/com_ditherkit_compose_ReferenceLineStyle$stableprop_getter(): kotlin/Int // com.ditherkit.compose/com_ditherkit_compose_ReferenceLineStyle$stableprop_getter|com_ditherkit_compose_ReferenceLineStyle$stableprop_getter(){}[0]

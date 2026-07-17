@@ -1,0 +1,291 @@
+public final class com/ditherkit/compose/AvatarMirror : java/lang/Enum {
+	public static final field Auto Lcom/ditherkit/compose/AvatarMirror;
+	public static final field Horizontal Lcom/ditherkit/compose/AvatarMirror;
+	public static final field Vertical Lcom/ditherkit/compose/AvatarMirror;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/AvatarMirror;
+	public static fun values ()[Lcom/ditherkit/compose/AvatarMirror;
+}
+
+public final class com/ditherkit/compose/BlockLegendKt {
+	public static final fun BlockLegend (Ljava/util/List;Landroidx/compose/ui/Modifier;Ljava/util/Map;Lkotlin/jvm/functions/Function1;Lcom/ditherkit/compose/LegendAlignment;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class com/ditherkit/compose/Bloom {
+	public static final field $stable I
+	public static final field Companion Lcom/ditherkit/compose/Bloom$Companion;
+	public fun <init> (FFFF)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun copy (FFFF)Lcom/ditherkit/compose/Bloom;
+	public static synthetic fun copy$default (Lcom/ditherkit/compose/Bloom;FFFFILjava/lang/Object;)Lcom/ditherkit/compose/Bloom;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBlurRadius ()F
+	public final fun getBrightness ()F
+	public final fun getOpacity ()F
+	public final fun getSaturation ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ditherkit/compose/Bloom$Companion {
+	public final fun getAura ()Lcom/ditherkit/compose/Bloom;
+	public final fun getHigh ()Lcom/ditherkit/compose/Bloom;
+	public final fun getLow ()Lcom/ditherkit/compose/Bloom;
+	public final fun getOff ()Lcom/ditherkit/compose/Bloom;
+}
+
+public final class com/ditherkit/compose/CartesianChartScope {
+	public static final field $stable I
+	public final fun area (Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;)V
+	public static synthetic fun area$default (Lcom/ditherkit/compose/CartesianChartScope;Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;ILjava/lang/Object;)V
+	public final fun bar (Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;)V
+	public static synthetic fun bar$default (Lcom/ditherkit/compose/CartesianChartScope;Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;ILjava/lang/Object;)V
+	public final fun grid (ZZLcom/ditherkit/compose/StrokeVariant;)V
+	public static synthetic fun grid$default (Lcom/ditherkit/compose/CartesianChartScope;ZZLcom/ditherkit/compose/StrokeVariant;ILjava/lang/Object;)V
+	public final fun legend (ZLcom/ditherkit/compose/LegendAlignment;)V
+	public static synthetic fun legend$default (Lcom/ditherkit/compose/CartesianChartScope;ZLcom/ditherkit/compose/LegendAlignment;ILjava/lang/Object;)V
+	public final fun line (Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/StrokeVariant;ZLcom/ditherkit/compose/DitherVariant;Lcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;)V
+	public static synthetic fun line$default (Lcom/ditherkit/compose/CartesianChartScope;Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/StrokeVariant;ZLcom/ditherkit/compose/DitherVariant;Lcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;ILjava/lang/Object;)V
+	public final fun referenceLine (Ljava/lang/Number;Ljava/lang/String;Lcom/ditherkit/compose/StrokeVariant;)V
+	public static synthetic fun referenceLine$default (Lcom/ditherkit/compose/CartesianChartScope;Ljava/lang/Number;Ljava/lang/String;Lcom/ditherkit/compose/StrokeVariant;ILjava/lang/Object;)V
+	public final fun tooltip (Lcom/ditherkit/compose/TooltipVariant;Lkotlin/jvm/functions/Function2;)V
+	public static synthetic fun tooltip$default (Lcom/ditherkit/compose/CartesianChartScope;Lcom/ditherkit/compose/TooltipVariant;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
+	public final fun xAxis (IFLkotlin/jvm/functions/Function2;)V
+	public static synthetic fun xAxis$default (Lcom/ditherkit/compose/CartesianChartScope;IFLkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
+	public final fun yAxis (IFLkotlin/jvm/functions/Function1;)V
+	public static synthetic fun yAxis$default (Lcom/ditherkit/compose/CartesianChartScope;IFLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+}
+
+public final class com/ditherkit/compose/CartesianChartsKt {
+	public static final fun AreaChart (Ljava/util/List;Landroidx/compose/ui/Modifier;Lcom/ditherkit/compose/StackType;Lcom/ditherkit/compose/Bloom;ZIIZLjava/lang/Integer;ZZLcom/ditherkit/compose/Margins;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;III)V
+	public static final fun BarChart (Ljava/util/List;Landroidx/compose/ui/Modifier;Lcom/ditherkit/compose/StackType;Lcom/ditherkit/compose/Bloom;ZIIZLjava/lang/Integer;ZZLcom/ditherkit/compose/Margins;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;III)V
+	public static final fun LineChart (Ljava/util/List;Landroidx/compose/ui/Modifier;Lcom/ditherkit/compose/StackType;Lcom/ditherkit/compose/Bloom;ZIIZLjava/lang/Integer;ZZLcom/ditherkit/compose/Margins;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;III)V
+}
+
+public final class com/ditherkit/compose/ChartDatum {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;)Lcom/ditherkit/compose/ChartDatum;
+	public static synthetic fun copy$default (Lcom/ditherkit/compose/ChartDatum;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lcom/ditherkit/compose/ChartDatum;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun get (Ljava/lang/String;)D
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getValues ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ditherkit/compose/ChartSeries {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;Lcom/ditherkit/compose/StrokeVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/SeriesKind;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;Lcom/ditherkit/compose/StrokeVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/SeriesKind;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lcom/ditherkit/compose/DitherColor;
+	public final fun component4 ()Lcom/ditherkit/compose/DitherVariant;
+	public final fun component5 ()Lcom/ditherkit/compose/StrokeVariant;
+	public final fun component6 ()Z
+	public final fun component7 ()Lcom/ditherkit/compose/DotStyle;
+	public final fun component8 ()Lcom/ditherkit/compose/DotStyle;
+	public final fun component9 ()Lcom/ditherkit/compose/SeriesKind;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;Lcom/ditherkit/compose/StrokeVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/SeriesKind;)Lcom/ditherkit/compose/ChartSeries;
+	public static synthetic fun copy$default (Lcom/ditherkit/compose/ChartSeries;Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;Lcom/ditherkit/compose/StrokeVariant;ZLcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/SeriesKind;ILjava/lang/Object;)Lcom/ditherkit/compose/ChartSeries;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActiveDot ()Lcom/ditherkit/compose/DotStyle;
+	public final fun getColor ()Lcom/ditherkit/compose/DitherColor;
+	public final fun getDataKey ()Ljava/lang/String;
+	public final fun getDot ()Lcom/ditherkit/compose/DotStyle;
+	public final fun getKind ()Lcom/ditherkit/compose/SeriesKind;
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getStrokeVariant ()Lcom/ditherkit/compose/StrokeVariant;
+	public final fun getVariant ()Lcom/ditherkit/compose/DitherVariant;
+	public fun hashCode ()I
+	public final fun isClickable ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface annotation class com/ditherkit/compose/DitherChartDsl : java/lang/annotation/Annotation {
+}
+
+public final class com/ditherkit/compose/DitherColor : java/lang/Enum {
+	public static final field Blue Lcom/ditherkit/compose/DitherColor;
+	public static final field Green Lcom/ditherkit/compose/DitherColor;
+	public static final field Grey Lcom/ditherkit/compose/DitherColor;
+	public static final field Orange Lcom/ditherkit/compose/DitherColor;
+	public static final field Pink Lcom/ditherkit/compose/DitherColor;
+	public static final field Purple Lcom/ditherkit/compose/DitherColor;
+	public static final field Red Lcom/ditherkit/compose/DitherColor;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getFill-0d7_KjU ()J
+	public final fun getLine-0d7_KjU ()J
+	public final fun getStar-0d7_KjU ()J
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/DitherColor;
+	public static fun values ()[Lcom/ditherkit/compose/DitherColor;
+}
+
+public final class com/ditherkit/compose/DitherComponentsKt {
+	public static final fun DitherAvatar-dsL6K2w (Ljava/lang/String;Landroidx/compose/ui/Modifier;FLjava/lang/Float;Lcom/ditherkit/compose/AvatarMirror;Lcom/ditherkit/compose/Bloom;ZIILandroidx/compose/runtime/Composer;II)V
+	public static final fun DitherButton (Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;Lcom/ditherkit/compose/DitherColor;Ljava/lang/Float;Lcom/ditherkit/compose/DitherVariant;Lcom/ditherkit/compose/Bloom;ZLkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+	public static final fun DitherGradient-V-95POc (Lcom/ditherkit/compose/DitherColor;Landroidx/compose/ui/Modifier;Lcom/ditherkit/compose/DitherColor;Ljava/lang/Float;Ljava/lang/Float;Lcom/ditherkit/compose/GradientDirection;FFLcom/ditherkit/compose/Bloom;Landroidx/compose/runtime/Composer;II)V
+	public static final fun Sparkline (Ljava/util/List;Lcom/ditherkit/compose/DitherColor;Landroidx/compose/ui/Modifier;Lcom/ditherkit/compose/DitherVariant;Ljava/lang/Integer;ZLcom/ditherkit/compose/Bloom;ZZLandroidx/compose/runtime/Composer;II)V
+}
+
+public final class com/ditherkit/compose/DitherTypesKt {
+	public static final fun chartData ([Lkotlin/Pair;)Ljava/util/List;
+}
+
+public final class com/ditherkit/compose/DitherVariant : java/lang/Enum {
+	public static final field Dotted Lcom/ditherkit/compose/DitherVariant;
+	public static final field Gradient Lcom/ditherkit/compose/DitherVariant;
+	public static final field Hatched Lcom/ditherkit/compose/DitherVariant;
+	public static final field Solid Lcom/ditherkit/compose/DitherVariant;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/DitherVariant;
+	public static fun values ()[Lcom/ditherkit/compose/DitherVariant;
+}
+
+public final class com/ditherkit/compose/DotStyle {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Lcom/ditherkit/compose/DotVariant;F)V
+	public synthetic fun <init> (Lcom/ditherkit/compose/DotVariant;FILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/ditherkit/compose/DotVariant;
+	public final fun component2 ()F
+	public final fun copy (Lcom/ditherkit/compose/DotVariant;F)Lcom/ditherkit/compose/DotStyle;
+	public static synthetic fun copy$default (Lcom/ditherkit/compose/DotStyle;Lcom/ditherkit/compose/DotVariant;FILjava/lang/Object;)Lcom/ditherkit/compose/DotStyle;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRadius ()F
+	public final fun getVariant ()Lcom/ditherkit/compose/DotVariant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ditherkit/compose/DotVariant : java/lang/Enum {
+	public static final field Border Lcom/ditherkit/compose/DotVariant;
+	public static final field ColoredBorder Lcom/ditherkit/compose/DotVariant;
+	public static final field Filled Lcom/ditherkit/compose/DotVariant;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/DotVariant;
+	public static fun values ()[Lcom/ditherkit/compose/DotVariant;
+}
+
+public final class com/ditherkit/compose/GradientDirection : java/lang/Enum {
+	public static final field Down Lcom/ditherkit/compose/GradientDirection;
+	public static final field Left Lcom/ditherkit/compose/GradientDirection;
+	public static final field Right Lcom/ditherkit/compose/GradientDirection;
+	public static final field Up Lcom/ditherkit/compose/GradientDirection;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/GradientDirection;
+	public static fun values ()[Lcom/ditherkit/compose/GradientDirection;
+}
+
+public final class com/ditherkit/compose/LegendAlignment : java/lang/Enum {
+	public static final field Center Lcom/ditherkit/compose/LegendAlignment;
+	public static final field End Lcom/ditherkit/compose/LegendAlignment;
+	public static final field Start Lcom/ditherkit/compose/LegendAlignment;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/LegendAlignment;
+	public static fun values ()[Lcom/ditherkit/compose/LegendAlignment;
+}
+
+public final class com/ditherkit/compose/Margins {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (FFFF)V
+	public synthetic fun <init> (FFFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()F
+	public final fun component2 ()F
+	public final fun component3 ()F
+	public final fun component4 ()F
+	public final fun copy (FFFF)Lcom/ditherkit/compose/Margins;
+	public static synthetic fun copy$default (Lcom/ditherkit/compose/Margins;FFFFILjava/lang/Object;)Lcom/ditherkit/compose/Margins;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBottom ()F
+	public final fun getEnd ()F
+	public final fun getStart ()F
+	public final fun getTop ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ditherkit/compose/PieChartScope {
+	public static final field $stable I
+	public final fun legend (ZLcom/ditherkit/compose/LegendAlignment;)V
+	public static synthetic fun legend$default (Lcom/ditherkit/compose/PieChartScope;ZLcom/ditherkit/compose/LegendAlignment;ILjava/lang/Object;)V
+	public final fun pie (Lcom/ditherkit/compose/DitherVariant;)V
+	public static synthetic fun pie$default (Lcom/ditherkit/compose/PieChartScope;Lcom/ditherkit/compose/DitherVariant;ILjava/lang/Object;)V
+	public final fun tooltip (Lcom/ditherkit/compose/TooltipVariant;Lkotlin/jvm/functions/Function2;)V
+	public static synthetic fun tooltip$default (Lcom/ditherkit/compose/PieChartScope;Lcom/ditherkit/compose/TooltipVariant;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
+}
+
+public final class com/ditherkit/compose/PolarChartsKt {
+	public static final fun PieChart (Ljava/util/List;Ljava/lang/String;Ljava/util/Map;Landroidx/compose/ui/Modifier;FLcom/ditherkit/compose/Bloom;ZIIZLcom/ditherkit/compose/Margins;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;III)V
+	public static final fun RadarChart (Ljava/util/List;Landroidx/compose/ui/Modifier;Lcom/ditherkit/compose/Bloom;ZIIZLcom/ditherkit/compose/Margins;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;III)V
+}
+
+public final class com/ditherkit/compose/RadarChartScope {
+	public static final field $stable I
+	public final fun legend (ZLcom/ditherkit/compose/LegendAlignment;)V
+	public static synthetic fun legend$default (Lcom/ditherkit/compose/RadarChartScope;ZLcom/ditherkit/compose/LegendAlignment;ILjava/lang/Object;)V
+	public final fun radar (Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;)V
+	public static synthetic fun radar$default (Lcom/ditherkit/compose/RadarChartScope;Ljava/lang/String;Ljava/lang/String;Lcom/ditherkit/compose/DitherColor;Lcom/ditherkit/compose/DitherVariant;ILjava/lang/Object;)V
+	public final fun tooltip (Lcom/ditherkit/compose/TooltipVariant;Lkotlin/jvm/functions/Function2;)V
+	public static synthetic fun tooltip$default (Lcom/ditherkit/compose/RadarChartScope;Lcom/ditherkit/compose/TooltipVariant;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
+}
+
+public final class com/ditherkit/compose/ReferenceLineStyle {
+	public static final field $stable I
+	public fun <init> (DLjava/lang/String;Lcom/ditherkit/compose/StrokeVariant;)V
+	public synthetic fun <init> (DLjava/lang/String;Lcom/ditherkit/compose/StrokeVariant;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lcom/ditherkit/compose/StrokeVariant;
+	public final fun copy (DLjava/lang/String;Lcom/ditherkit/compose/StrokeVariant;)Lcom/ditherkit/compose/ReferenceLineStyle;
+	public static synthetic fun copy$default (Lcom/ditherkit/compose/ReferenceLineStyle;DLjava/lang/String;Lcom/ditherkit/compose/StrokeVariant;ILjava/lang/Object;)Lcom/ditherkit/compose/ReferenceLineStyle;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getStrokeVariant ()Lcom/ditherkit/compose/StrokeVariant;
+	public final fun getValue ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/ditherkit/compose/SeriesKind : java/lang/Enum {
+	public static final field Area Lcom/ditherkit/compose/SeriesKind;
+	public static final field Bar Lcom/ditherkit/compose/SeriesKind;
+	public static final field Line Lcom/ditherkit/compose/SeriesKind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/SeriesKind;
+	public static fun values ()[Lcom/ditherkit/compose/SeriesKind;
+}
+
+public final class com/ditherkit/compose/StackType : java/lang/Enum {
+	public static final field Default Lcom/ditherkit/compose/StackType;
+	public static final field Percent Lcom/ditherkit/compose/StackType;
+	public static final field Stacked Lcom/ditherkit/compose/StackType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/StackType;
+	public static fun values ()[Lcom/ditherkit/compose/StackType;
+}
+
+public final class com/ditherkit/compose/StrokeVariant : java/lang/Enum {
+	public static final field Dashed Lcom/ditherkit/compose/StrokeVariant;
+	public static final field Solid Lcom/ditherkit/compose/StrokeVariant;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/StrokeVariant;
+	public static fun values ()[Lcom/ditherkit/compose/StrokeVariant;
+}
+
+public final class com/ditherkit/compose/TooltipVariant : java/lang/Enum {
+	public static final field Default Lcom/ditherkit/compose/TooltipVariant;
+	public static final field FrostedGlass Lcom/ditherkit/compose/TooltipVariant;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/ditherkit/compose/TooltipVariant;
+	public static fun values ()[Lcom/ditherkit/compose/TooltipVariant;
+}
+

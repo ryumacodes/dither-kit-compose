@@ -19,14 +19,22 @@ Compose examples →
 
 ## Install
 
-Until a public Maven coordinate is released, publish the library to your local
-Maven repository:
+The public Maven coordinate is:
+
+```kotlin
+commonMain.dependencies {
+    implementation("io.github.ryumacodes:dither-kit-compose:<version>")
+}
+```
+
+Until the first Maven Central release is available, publish the library to your
+local Maven repository:
 
 ```bash
 ./gradlew :dither-kit-compose:publishToMavenLocal
 ```
 
-Then add the root multiplatform dependency:
+Then use the snapshot coordinate locally:
 
 ```kotlin
 commonMain.dependencies {
@@ -248,17 +256,21 @@ The Compose API tracks Dither Kit `main` at commit
 
 ## Publishing
 
-Maven Central-compatible POM metadata, sources publications, credential hooks,
-and in-memory PGP signing are configured in
-[`dither-kit-compose/build.gradle.kts`](dither-kit-compose/build.gradle.kts).
+Releases publish `io.github.ryumacodes:dither-kit-compose:<version>` to Maven
+Central. The `io.github.ryumacodes` namespace must first be verified in the
+[Maven Central Portal](https://central.sonatype.org/register/namespace/).
 
-Required Gradle properties or environment variables:
+Publishing runs only when a GitHub Release is created. Configure these
+repository secrets before the first release:
 
-- `mavenCentralUsername` / `MAVEN_CENTRAL_USERNAME`
-- `mavenCentralPassword` / `MAVEN_CENTRAL_PASSWORD`
-- `signingKey` / `SIGNING_KEY`
-- `signingPassword` / `SIGNING_PASSWORD`
-- `GROUP` and `VERSION_NAME` to override the defaults
+- `MAVEN_CENTRAL_USERNAME`
+- `MAVEN_CENTRAL_PASSWORD`
+- `SIGNING_KEY`
+- `SIGNING_PASSWORD`
+
+The release tag supplies the version; both `v0.1.0` and `0.1.0` publish version
+`0.1.0`. The publication includes Gradle module metadata, platform artifacts,
+sources, documentation, POM metadata, and signatures.
 
 ## Credit
 
