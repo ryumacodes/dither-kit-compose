@@ -502,13 +502,65 @@ function syncControlPanel() {
   })
 }
 
-function animateCanvases(canvases) {
-  canvases.forEach((canvas) => {
-    canvas.animate(
-      [{ opacity: 0.15, transform: "translateY(3px)" }, { opacity: 1, transform: "translateY(0)" }],
-      { duration: state.entranceMs, easing: "cubic-bezier(.2,.8,.2,1)" },
-    )
+const revealedCanvases = new WeakSet()
+
+function revealFrames(canvas) {
+  if (canvas.closest("[data-demo=pie], [data-demo=radar], .avatar-demo")) {
+    return [
+      { opacity: 0, clipPath: "circle(0% at 50% 50%)", filter: "brightness(.55)" },
+      { opacity: 1, offset: 0.18 },
+      { opacity: 1, clipPath: "circle(75% at 50% 50%)", filter: "brightness(1)" },
+    ]
+  }
+  if (canvas.closest(".gradient-demo")) {
+    return [
+      { opacity: 0, clipPath: "inset(0 0 100% 0)", filter: "brightness(.55)" },
+      { opacity: 1, offset: 0.18 },
+      { opacity: 1, clipPath: "inset(0 0 0% 0)", filter: "brightness(1)" },
+    ]
+  }
+  return [
+    { opacity: 0, clipPath: "inset(0 100% 0 0)", filter: "brightness(.55)" },
+    { opacity: 1, offset: 0.14 },
+    { opacity: 1, clipPath: "inset(0 0% 0 0)", filter: "brightness(1)" },
+  ]
+}
+
+function animateCanvases(canvases, stagger = 0) {
+  ;[...canvases].forEach((canvas, index) => {
+    revealedCanvases.add(canvas)
+    canvas.style.opacity = "1"
+    canvas.style.clipPath = ""
+    canvas.getAnimations().forEach((animation) => animation.cancel())
+    canvas.animate(revealFrames(canvas), {
+      duration: state.entranceMs,
+      delay: index * stagger,
+      easing: "cubic-bezier(.2,.8,.2,1)",
+      fill: "both",
+    })
   })
+}
+
+function setupEntranceAnimations() {
+  const canvases = document.querySelectorAll(".demo canvas, .avatar-demo canvas, .gradient-demo canvas")
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+    canvases.forEach((canvas) => { canvas.style.opacity = "1" })
+    return
+  }
+
+  canvases.forEach((canvas) => {
+    canvas.classList.add("reveal-canvas")
+    canvas.style.opacity = "0"
+  })
+
+  const observer = new IntersectionObserver((entries) => {
+    const entering = entries.filter((entry) => entry.isIntersecting && !revealedCanvases.has(entry.target))
+    if (!entering.length) return
+    animateCanvases(entering.map((entry) => entry.target), 35)
+    entering.forEach((entry) => observer.unobserve(entry.target))
+  }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" })
+
+  canvases.forEach((canvas) => observer.observe(canvas))
 }
 
 function bindCharts() {
@@ -678,4 +730,5 @@ bindControls()
 bindCharts()
 bindActions()
 drawAll()
+setupEntranceAnimations()
 window.addEventListener("resize", drawAll)
