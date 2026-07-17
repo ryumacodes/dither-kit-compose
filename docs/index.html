@@ -182,11 +182,31 @@
       <div class="dither-edge" aria-hidden="true"></div>
 
       <aside class="control-panel" aria-label="Chart controls" hidden>
-        <div class="control-group"><span>variant</span><div class="segmented" data-control="variant"><button class="active" data-value="gradient">gradient</button><button data-value="dotted">dotted</button><button data-value="hatched">hatched</button><button data-value="solid">solid</button></div></div>
-        <div class="control-group"><span>bloom</span><div class="segmented" data-control="bloom"><button data-value="off">off</button><button data-value="low">low</button><button class="active" data-value="aura">aura</button></div></div>
-        <div class="control-group"><span>bars</span><div class="segmented" data-control="stack"><button class="active" data-value="default">grouped</button><button data-value="stacked">stacked</button><button data-value="percent">percent</button></div></div>
+        <div class="panel-header">
+          <strong>dither-kit-<span class="compose-accent">compose</span></strong>
+          <button class="panel-close" aria-label="Close chart controls">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 12h3M11 12h9M4 17h8M16 17h4"/><circle cx="16" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="14" cy="17" r="2"/></svg>
+          </button>
+        </div>
+        <div class="panel-tools">
+          <button aria-label="Chart configuration"><span>☷</span></button>
+          <label><span class="sr-only">Configuration version</span><select><option>Version 1</option></select></label>
+          <button class="reset-controls" aria-label="Reset chart controls"><span>↻</span></button>
+        </div>
+        <div class="panel-divider"></div>
+        <section class="panel-section">
+          <div class="panel-section-title"><strong>Bloom</strong><span>⌃</span></div>
+          <label class="select-control"><span>Desktop Variant</span><select data-setting="desktopVariant"><option value="gradient">Gradient</option><option value="dotted">Dotted</option><option value="hatched">Hatched</option><option value="solid">Solid</option></select></label>
+          <label class="select-control"><span>Mobile Variant</span><select data-setting="mobileVariant"><option value="gradient">Gradient</option><option value="dotted">Dotted</option><option value="hatched">Hatched</option><option value="solid">Solid</option></select></label>
+          <div class="toggle-control"><span>Stacked</span><div role="group" aria-label="Stacked bars"><button data-stack="false">Off</button><button class="active" data-stack="true">On</button></div></div>
+          <label class="range-control"><span>Pie Inner Radius</span><input data-setting="pieInnerRadius" type="range" min="0" max="0.75" value="0.5" step="0.05"/><output>0.50</output></label>
+          <label class="range-control"><span>Entrance Ms</span><input data-setting="entranceMs" type="range" min="200" max="1600" value="900" step="100"/><output>900</output></label>
+          <button class="replay-all">Replay All</button>
+        </section>
       </aside>
-      <button class="dial-button" aria-label="Open chart controls" aria-expanded="false">☷</button>
+      <button class="dial-button" aria-label="Open chart controls" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 12h3M11 12h9M4 17h8M16 17h4"/><circle cx="16" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="14" cy="17" r="2"/></svg>
+      </button>
     </div>
   </body>
 </html>

@@ -17,7 +17,15 @@ const bayer = [
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"]
 const desktop = [186, 240, 205, 278, 255, 322, 298, 352]
 const mobile = [80, 118, 142, 165, 188, 215, 234, 252]
-const state = { variant: "gradient", bloom: "aura", stack: "default", hover: {} }
+const defaults = {
+  desktopVariant: "gradient",
+  mobileVariant: "gradient",
+  bloom: "aura",
+  stacked: true,
+  pieInnerRadius: 0.5,
+  entranceMs: 900,
+}
+const state = { ...defaults, hover: {} }
 
 function rgb(color, alpha = 1) {
   return `rgba(${color[0]},${color[1]},${color[2]},${alpha})`
@@ -97,7 +105,7 @@ function drawGrid(context, box, labels = true) {
   context.restore()
 }
 
-function fillBand(context, top, bottom, color, cell = 2) {
+function fillBand(context, top, bottom, color, cell = 2, variant = state.desktopVariant) {
   context.save()
   glow(context, color)
   const columns = Math.floor((top.at(-1).x - top[0].x) / cell)
@@ -109,8 +117,8 @@ function fillBand(context, top, bottom, color, cell = 2) {
     const end = Math.ceil(Math.max(y1, y2) / cell)
     for (let row = start; row < end; row += 1) {
       const depth = (row - start) / Math.max(1, end - start)
-      const density = densityFor(state.variant, depth)
-      if (!cellVisible(column, row, density, state.variant)) continue
+      const density = densityFor(variant, depth)
+      if (!cellVisible(column, row, density, variant)) continue
       context.fillStyle = rgb(color, 0.35 + density * 0.55)
       context.fillRect(x, row * cell, cell + 0.2, cell + 0.2)
     }
@@ -158,8 +166,8 @@ function drawArea(card) {
   drawGrid(context, box)
   const first = linePoints(desktop, box)
   const second = linePoints(mobile, box)
-  fillBand(context, first, box.top + box.height, palette.blue)
-  fillBand(context, second, second.map((point) => ({ ...point, y: point.y + 30 })), palette.purple)
+  fillBand(context, first, box.top + box.height, palette.blue, 2, state.desktopVariant)
+  fillBand(context, second, second.map((point) => ({ ...point, y: point.y + 30 })), palette.purple, 2, state.mobileVariant)
   marker(context, box, state.hover.area, [{ points: first, color: palette.blue }, { points: second, color: palette.purple }])
 }
 
@@ -170,7 +178,7 @@ function drawLine(card) {
   const box = chartBox(width, height)
   drawGrid(context, box)
   const points = linePoints(desktop, box)
-  fillBand(context, points, points.map((point) => ({ ...point, y: point.y + 22 })), palette.pink)
+  fillBand(context, points, points.map((point) => ({ ...point, y: point.y + 22 })), palette.pink, 2, state.desktopVariant)
   const target = box.top + box.height * (1 - 200 / 380)
   context.strokeStyle = "rgba(160,160,170,.55)"
   context.setLineDash([5, 5])
@@ -191,28 +199,28 @@ function drawBar(card) {
   context.clearRect(0, 0, width, height)
   const box = chartBox(width, height)
   drawGrid(context, box)
-  const max = state.stack === "stacked" ? 580 : state.stack === "percent" ? 1 : 380
+  const max = state.stacked ? 580 : 380
   const slot = box.width / months.length
   const cell = 2
   const series = [desktop, mobile]
   const colors = [palette.green, palette.orange]
   months.forEach((_, index) => {
     let base = 0
-    const total = desktop[index] + mobile[index]
     series.forEach((values, seriesIndex) => {
-      const value = state.stack === "percent" ? values[index] / total : values[index]
-      const start = state.stack === "default" ? 0 : base
+      const value = values[index]
+      const start = state.stacked ? base : 0
       const end = start + value
-      if (state.stack !== "default") base = end
-      const barWidth = state.stack === "default" ? slot * 0.34 : slot * 0.62
-      const x = box.left + index * slot + (state.stack === "default" ? slot * (0.14 + seriesIndex * 0.38) : slot * 0.19)
+      if (state.stacked) base = end
+      const barWidth = state.stacked ? slot * 0.62 : slot * 0.34
+      const x = box.left + index * slot + (state.stacked ? slot * 0.19 : slot * (0.14 + seriesIndex * 0.38))
       const top = box.top + box.height * (1 - end / max)
       const bottom = box.top + box.height * (1 - start / max)
       glow(context, colors[seriesIndex])
       for (let px = 0; px < barWidth; px += cell) {
         for (let py = top; py < bottom; py += cell) {
-          const density = densityFor(state.variant, (py - top) / Math.max(1, bottom - top))
-          if (!cellVisible(Math.floor(px / cell), Math.floor(py / cell), density, state.variant)) continue
+          const variant = seriesIndex === 0 ? state.desktopVariant : state.mobileVariant
+          const density = densityFor(variant, (py - top) / Math.max(1, bottom - top))
+          if (!cellVisible(Math.floor(px / cell), Math.floor(py / cell), density, variant)) continue
           context.fillStyle = rgb(colors[seriesIndex], 0.35 + density * 0.55)
           context.fillRect(x + px, py, cell, cell)
         }
@@ -231,7 +239,7 @@ function drawPie(card) {
   const total = values.reduce((sum, value) => sum + value, 0)
   const center = { x: width / 2, y: height / 2 }
   const outer = Math.min(width, height) * 0.37
-  const inner = outer * 0.5
+  const inner = outer * state.pieInnerRadius
   const cell = 2
   let starts = []
   let angle = -Math.PI / 2
@@ -249,8 +257,9 @@ function drawPie(card) {
         const end = starts[candidate] + (values[candidate] / total) * Math.PI * 2
         if (pointAngle >= starts[candidate] && pointAngle <= end) { index = candidate; break }
       }
-      const density = densityFor(state.variant, (radius - inner) / (outer - inner))
-      if (!cellVisible(Math.floor(x / cell), Math.floor(y / cell), density, state.variant)) continue
+      const variant = index % 2 === 0 ? state.desktopVariant : state.mobileVariant
+      const density = densityFor(variant, (radius - inner) / Math.max(1, outer - inner))
+      if (!cellVisible(Math.floor(x / cell), Math.floor(y / cell), density, variant)) continue
       context.fillStyle = rgb(colors[index], 0.4 + density * 0.55)
       glow(context, colors[index])
       context.fillRect(x, y, cell, cell)
@@ -309,8 +318,9 @@ function drawRadar(card) {
     for (let y = minY; y <= maxY; y += cell) {
       for (let x = minX; x <= maxX; x += cell) {
         if (!insidePolygon(x, y, points)) continue
-        const density = densityFor(state.variant, 0.55)
-        if (!cellVisible(Math.floor(x / cell), Math.floor(y / cell), density, state.variant)) continue
+        const variant = setIndex === 0 ? state.desktopVariant : state.mobileVariant
+        const density = densityFor(variant, 0.55)
+        if (!cellVisible(Math.floor(x / cell), Math.floor(y / cell), density, variant)) continue
         context.fillStyle = rgb(colors[setIndex], setIndex ? 0.48 : 0.62)
         glow(context, colors[setIndex])
         context.fillRect(x, y, cell, cell)
@@ -409,7 +419,7 @@ function drawSpark(canvas) {
   context.clearRect(0, 0, width, height)
   const box = { left: 4, top: 10, width: width - 8, height: height - 18 }
   const points = linePoints([3, 7, 5, 9, 8, 12, 11, 15], box, 16)
-  fillBand(context, points, box.top + box.height, palette.green)
+  fillBand(context, points, box.top + box.height, palette.green, 2, state.desktopVariant)
 }
 
 function drawAll() {
@@ -426,14 +436,65 @@ function drawAll() {
 }
 
 function bindControls() {
-  document.querySelectorAll("[data-control]").forEach((group) => {
-    group.addEventListener("click", (event) => {
-      const button = event.target.closest("button")
-      if (!button) return
-      group.querySelectorAll("button").forEach((item) => item.classList.toggle("active", item === button))
-      state[group.dataset.control] = button.dataset.value
+  document.querySelectorAll("select[data-setting]").forEach((select) => {
+    select.addEventListener("change", () => {
+      state[select.dataset.setting] = select.value
       drawAll()
     })
+  })
+
+  document.querySelectorAll("[data-stack]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.stacked = button.dataset.stack === "true"
+      document.querySelectorAll("[data-stack]").forEach((item) => item.classList.toggle("active", item === button))
+      drawAll()
+    })
+  })
+
+  document.querySelectorAll('input[type="range"][data-setting]').forEach((input) => {
+    input.addEventListener("input", () => {
+      const setting = input.dataset.setting
+      state[setting] = Number(input.value)
+      syncRange(input)
+      if (setting === "pieInnerRadius") drawAll()
+    })
+    syncRange(input)
+  })
+
+  document.querySelector(".reset-controls").addEventListener("click", () => {
+    Object.assign(state, defaults)
+    syncControlPanel()
+    drawAll()
+  })
+
+  document.querySelector(".replay-all").addEventListener("click", () => {
+    drawAll()
+    animateCanvases(document.querySelectorAll("canvas"))
+  })
+}
+
+function syncRange(input) {
+  const progress = ((Number(input.value) - Number(input.min)) / (Number(input.max) - Number(input.min))) * 100
+  input.style.setProperty("--range-progress", `${progress}%`)
+  input.nextElementSibling.value = input.dataset.setting === "pieInnerRadius" ? Number(input.value).toFixed(2) : input.value
+}
+
+function syncControlPanel() {
+  document.querySelector('[data-setting="desktopVariant"]').value = state.desktopVariant
+  document.querySelector('[data-setting="mobileVariant"]').value = state.mobileVariant
+  document.querySelectorAll("[data-stack]").forEach((button) => button.classList.toggle("active", (button.dataset.stack === "true") === state.stacked))
+  document.querySelectorAll('input[type="range"][data-setting]').forEach((input) => {
+    input.value = state[input.dataset.setting]
+    syncRange(input)
+  })
+}
+
+function animateCanvases(canvases) {
+  canvases.forEach((canvas) => {
+    canvas.animate(
+      [{ opacity: 0.15, transform: "translateY(3px)" }, { opacity: 1, transform: "translateY(0)" }],
+      { duration: state.entranceMs, easing: "cubic-bezier(.2,.8,.2,1)" },
+    )
   })
 }
 
@@ -472,7 +533,7 @@ function bindActions() {
     button.addEventListener("click", () => {
       const canvas = button.closest(".demo").querySelector("canvas")
       drawAll()
-      canvas.animate([{ opacity: 0.15, transform: "translateY(3px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 420, easing: "ease-out" })
+      animateCanvases([canvas])
     })
   })
   const save = document.querySelector(".dither-button")
@@ -512,8 +573,16 @@ function bindActions() {
   dial.addEventListener("click", () => {
     const open = panel.hidden
     panel.hidden = !open
+    root.classList.toggle("panel-open", open)
     dial.setAttribute("aria-expanded", String(open))
     dial.setAttribute("aria-label", open ? "Close chart controls" : "Open chart controls")
+  })
+  document.querySelector(".panel-close").addEventListener("click", () => {
+    panel.hidden = true
+    root.classList.remove("panel-open")
+    dial.setAttribute("aria-expanded", "false")
+    dial.setAttribute("aria-label", "Open chart controls")
+    dial.focus()
   })
 
   const installCommands = document.querySelectorAll(".copy-command")
