@@ -461,12 +461,18 @@ function bindCharts() {
 }
 
 function bindActions() {
-  document.querySelectorAll(".code-toggle").forEach((button) => {
+  document.querySelectorAll(".preview-actions").forEach((actions) => {
+    const demo = actions.closest(".demo")
+    const preview = actions.querySelector(".code-toggle:not(.code-button)")
+    const code = actions.querySelector(".code-button")
+    preview.addEventListener("click", () => setCodeVisible(demo, preview, code, false))
+    code.addEventListener("click", () => setCodeVisible(demo, preview, code, true))
+  })
+  document.querySelectorAll(".replay").forEach((button) => {
     button.addEventListener("click", () => {
-      const card = button.closest(".demo-card")
-      const visible = card.classList.toggle("show-code")
-      button.setAttribute("aria-expanded", String(visible))
-      button.textContent = visible ? "hide" : "code"
+      const canvas = button.closest(".demo").querySelector("canvas")
+      drawAll()
+      canvas.animate([{ opacity: 0.15, transform: "translateY(3px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 420, easing: "ease-out" })
     })
   })
   const save = document.querySelector(".dither-button")
@@ -475,13 +481,69 @@ function bindActions() {
     status.textContent = "saved ✓"
     window.setTimeout(() => { status.textContent = "ready" }, 1300)
   })
-  const copy = document.querySelector(".install-command button")
-  copy.addEventListener("click", async () => {
-    const command = document.querySelector(".install-command code").textContent
-    await navigator.clipboard.writeText(command)
-    copy.textContent = "copied"
-    window.setTimeout(() => { copy.textContent = "copy" }, 1300)
+  document.querySelectorAll(".copy-command").forEach((button) => {
+    button.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(button.dataset.copy)
+      const icon = button.querySelector("span")
+      icon.textContent = "✓"
+      window.setTimeout(() => { icon.textContent = "⧉" }, 1300)
+    })
   })
+  const inlineCopy = document.querySelector(".copy-inline")
+  inlineCopy.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(inlineCopy.previousElementSibling.textContent)
+    inlineCopy.textContent = "✓"
+    window.setTimeout(() => { inlineCopy.textContent = "⧉" }, 1300)
+  })
+
+  const root = document.querySelector(".dk-docs")
+  const theme = document.querySelector(".theme-toggle")
+  theme.addEventListener("click", () => {
+    const light = root.classList.toggle("light")
+    root.classList.toggle("dark", !light)
+    theme.textContent = light ? "☾" : "☼"
+    theme.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme")
+    document.querySelector('meta[name="theme-color"]').content = light ? "#ffffff" : "#0d0d0f"
+    drawAll()
+  })
+
+  const dial = document.querySelector(".dial-button")
+  const panel = document.querySelector(".control-panel")
+  dial.addEventListener("click", () => {
+    const open = panel.hidden
+    panel.hidden = !open
+    dial.setAttribute("aria-expanded", String(open))
+    dial.setAttribute("aria-label", open ? "Close chart controls" : "Open chart controls")
+  })
+
+  const installCommands = document.querySelectorAll(".copy-command")
+  document.querySelectorAll("[data-install]").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-install]").forEach((item) => item.classList.toggle("active", item === button))
+      const checkout = button.dataset.install === "checkout"
+      const values = checkout
+        ? [
+            "include(\":dither-kit-compose\")",
+            "implementation(project(\":dither-kit-compose\"))",
+          ]
+        : [
+            "./gradlew :dither-kit-compose:publishToMavenLocal",
+            'implementation("io.github.ryumacodes:dither-kit-compose:0.1.0-SNAPSHOT")',
+          ]
+      installCommands.forEach((command, index) => {
+        command.dataset.copy = values[index]
+        command.querySelector("code").textContent = `${index === 0 && !checkout ? "$ " : ""}${values[index]}`
+      })
+    })
+  })
+}
+
+function setCodeVisible(demo, preview, code, visible) {
+  demo.classList.toggle("show-code", visible)
+  preview.classList.toggle("active", !visible)
+  code.classList.toggle("active", visible)
+  preview.setAttribute("aria-expanded", String(!visible))
+  code.setAttribute("aria-expanded", String(visible))
 }
 
 const avatarNames = ["ryuma", "dither-kit", "compose", "tripwire"]
