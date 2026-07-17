@@ -47,6 +47,7 @@ h1, h2, h3, p { margin: 0; }
 h1 { font: 48px/1 var(--pixel); }
 h2 { font: 18px/28px var(--pixel); white-space: nowrap; }
 h3 { display: inline; font: 16px/24px var(--pixel); }
+.compose-accent { color: var(--primary); }
 .tagline, .hint, .section-note, .fine-print, .component-name, .legend, .preview-actions, .install-tabs, .command, .wide-action, .knob-list, .code-sample, footer { font-family: var(--mono); }
 .tagline { margin-top: 3px; color: var(--muted-foreground); font-size: 11px; line-height: 1.5; }
 .intro { max-width: 580px; color: var(--muted-foreground); font-size: 16px; line-height: 1.625; }
